@@ -6,7 +6,7 @@ export const combineClassNames = (
 };
 
 export const getRootStyleSheet = () => {
-  const rootStyleSheet = window.getComputedStyle(
+  const rootStyleSheet = getComputedStyle(
     document.getElementById("root") as HTMLElement
   );
 

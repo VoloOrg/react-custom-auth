@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { getRootStyleSheet } from '../utils/styles';
+import { getRootStyleSheet } from 'utils/styles';
 
 const getStyleSheetProperty = getRootStyleSheet();
 

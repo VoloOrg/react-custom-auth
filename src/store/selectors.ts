@@ -1,7 +1,4 @@
-import { RootState } from "../index";
+import { RootState } from "./main";
 
-export const selectCompanies = (state: RootState) =>
-  state.companies.allCompanies;
-export const selectCompaniesTotalCount = (state: RootState) =>
-  state.companies.companiesCount;
-export const selectIsPending = (state: RootState) => state.companies.isPending;
+export const selectIsLoggedIn = (state: RootState) => state.isLoggedIn 
+export const selectIsPending = (state: RootState) => state.isPending 
