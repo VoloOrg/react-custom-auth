@@ -1,16 +1,13 @@
-import { FC } from "react";
-import {
-  RouterProvider,
-  createBrowserRouter
-} from "react-router-dom";
-import { PUBLIC_ROUTES, PRIVATE_ROUTES } from "./routes";
+import { FC } from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from './routes'
 
 const Router: FC = () => {
-  const routes = true ? PUBLIC_ROUTES : PRIVATE_ROUTES;
-  
-  const router = createBrowserRouter(routes);
+  const routes = true ? PUBLIC_ROUTES : PRIVATE_ROUTES
 
-  return <RouterProvider router={router} />;
-};
+  const router = createBrowserRouter(routes)
 
-export default Router;
+  return <RouterProvider router={router} />
+}
+
+export default Router

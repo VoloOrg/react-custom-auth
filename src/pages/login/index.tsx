@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
-import AppNavLink from 'components/ui/appNavLink';
-import { LoginForm } from './Form';
-import { PUBLIC_PAGES } from 'constants/pages';
+import { Typography } from '@mui/material'
+import AppNavLink from 'components/ui/appNavLink'
+import { PUBLIC_PAGES } from 'constants/pages'
+import { LoginForm } from './Form'
 
 const Login = () => {
   return (
@@ -10,14 +10,14 @@ const Login = () => {
         Welcome Back
       </Typography>
       <Typography paragraph>
-        Don't have an account?{" "}
+        Don't have an account?{' '}
         <AppNavLink primary to={PUBLIC_PAGES.registration}>
           Create Now!
         </AppNavLink>
       </Typography>
       <LoginForm />
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

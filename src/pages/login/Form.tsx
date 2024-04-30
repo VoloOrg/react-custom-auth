@@ -1,29 +1,23 @@
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-} from "@mui/material";
-import AppNavLink from 'components/ui/appNavLink';
-import { LOGIN_FORM_INITIAL_VALUES, LOGIN_FORM_VALIDATION_SCHEMA } from 'constants/auth/login';
-import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages';
-import { useFormik } from "formik";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Box, Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
+import AppNavLink from 'components/ui/appNavLink'
+import { LOGIN_FORM_INITIAL_VALUES, LOGIN_FORM_VALIDATION_SCHEMA } from 'constants/auth/login'
+import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
+import { useFormik } from 'formik'
 
 export const LoginForm: FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: LOGIN_FORM_INITIAL_VALUES,
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     onSubmit: (values) => {
-      console.log({values});
-      
-      navigate(PRIVATE_PAGES.home);
+      console.log({ values })
+
+      navigate(PRIVATE_PAGES.home)
     },
-  });
+  })
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -62,5 +56,5 @@ export const LoginForm: FC = () => {
         </Button>
       </Box>
     </form>
-  );
-};
+  )
+}

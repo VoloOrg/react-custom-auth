@@ -1,6 +1,6 @@
+import { Navigate, RouteObject } from 'react-router-dom'
 import Error from 'components/ui/error'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
-import { Navigate, RouteObject } from 'react-router-dom'
 import { ConfirmationPage, ForgotPasswordPage, HomePage, LoginPage, RegistrationPage } from './Pages'
 
 export const PUBLIC_ROUTES: RouteObject[] = [

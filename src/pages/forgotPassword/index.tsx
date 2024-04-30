@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
-import { ForgotPasswordForm } from "./Form";
+import { Typography } from '@mui/material'
+import { ForgotPasswordForm } from './Form'
 
 const ForgotPassword = () => {
   return (
@@ -9,7 +9,7 @@ const ForgotPassword = () => {
       </Typography>
       <ForgotPasswordForm />
     </>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

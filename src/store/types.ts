@@ -3,7 +3,7 @@ export type ProfileSlice = {
   isLoggedIn: boolean
   isPending: boolean
   errorMessage: Error['message']
-};
+}
 
 export type Profile = {
   id: string
@@ -15,4 +15,3 @@ export type Profile = {
 export type ProfileActionPayloads = {
   setProfileData: Partial<Profile>
 }
-

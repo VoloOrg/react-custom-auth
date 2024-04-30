@@ -1,5 +1,5 @@
-import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProfileActionPayloads, ProfileSlice } from "./types";
+import { Action, PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { ProfileActionPayloads, ProfileSlice } from './types'
 
 const initialState: ProfileSlice = {
   data: {
@@ -11,40 +11,37 @@ const initialState: ProfileSlice = {
   isLoggedIn: false,
   isPending: false,
   errorMessage: '',
-};
+}
 
-const isFulfilledAction = (action: Action) => action.type.endsWith('/fulfilled');
-const isPendingAction = (action: Action) => action.type.endsWith('/pending');
-const isRejectedAction = (action: Action) => action.type.endsWith('/rejected');
+const isFulfilledAction = (action: Action) => action.type.endsWith('/fulfilled')
+const isPendingAction = (action: Action) => action.type.endsWith('/pending')
+const isRejectedAction = (action: Action) => action.type.endsWith('/rejected')
 
 export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfileData: (
-      state,
-      { payload }: PayloadAction<ProfileActionPayloads['setProfileData']>
-    ) => {
+    setProfileData: (state, { payload }: PayloadAction<ProfileActionPayloads['setProfileData']>) => {
       state.data = {
         ...state.data,
-        ...payload
+        ...payload,
       }
     },
   },
   extraReducers: (builder) => {
     builder
       .addMatcher(isPendingAction, (state) => {
-        state.isPending = true;
+        state.isPending = true
       })
       .addMatcher(isFulfilledAction, (state) => {
-        state.isPending = false;
+        state.isPending = false
       })
       .addMatcher(isRejectedAction, (state) => {
-        state.isPending = false;
-      });
+        state.isPending = false
+      })
   },
-});
+})
 
-export const { setProfileData } = profileSlice.actions;
+export const { setProfileData } = profileSlice.actions
 
-export default profileSlice.reducer;
+export default profileSlice.reducer

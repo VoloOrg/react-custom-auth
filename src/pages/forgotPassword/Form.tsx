@@ -1,22 +1,25 @@
-import { Box, Button, TextField } from "@mui/material";
-import { useFormik } from "formik";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
-import AppNavLink from "../../components/ui/appNavLink";
-import { FORGOT_PASSWORD_FORM_INITIAL_VALUES, FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA } from 'constants/auth/forgotPassword';
-import { PUBLIC_PAGES } from 'constants/pages';
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Box, Button, TextField } from '@mui/material'
+import {
+  FORGOT_PASSWORD_FORM_INITIAL_VALUES,
+  FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
+} from 'constants/auth/forgotPassword'
+import { PUBLIC_PAGES } from 'constants/pages'
+import { useFormik } from 'formik'
+import AppNavLink from '../../components/ui/appNavLink'
 
 export const ForgotPasswordForm: FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: FORGOT_PASSWORD_FORM_INITIAL_VALUES,
     validationSchema: FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
     onSubmit: (values) => {
-      console.log({values});
-      navigate(PUBLIC_PAGES.confirmation);
+      console.log({ values })
+      navigate(PUBLIC_PAGES.confirmation)
     },
-  });
+  })
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -42,5 +45,5 @@ export const ForgotPasswordForm: FC = () => {
         </Button>
       </Box>
     </form>
-  );
-};
+  )
+}

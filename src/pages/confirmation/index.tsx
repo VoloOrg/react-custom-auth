@@ -1,12 +1,11 @@
-import { Box, Typography } from "@mui/material";
-import AppNavLink from 'components/ui/appNavLink';
-import { AUTH_CONFIRMATION_DETAILS } from 'constants/confirmations';
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom'
+import { Box, Typography } from '@mui/material'
+import AppNavLink from 'components/ui/appNavLink'
+import { AUTH_CONFIRMATION_DETAILS } from 'constants/confirmations'
 
 const Confirmation = () => {
-  const [searchParams] = useSearchParams();
-  const texts =
-    AUTH_CONFIRMATION_DETAILS[searchParams.get("type") ?? "register"];
+  const [searchParams] = useSearchParams()
+  const texts = AUTH_CONFIRMATION_DETAILS[searchParams.get('type') ?? 'register']
 
   return (
     <Box>
@@ -18,7 +17,7 @@ const Confirmation = () => {
         {texts.buttonText}
       </AppNavLink>
     </Box>
-  );
-};
+  )
+}
 
-export default Confirmation;
+export default Confirmation

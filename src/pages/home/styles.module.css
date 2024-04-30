@@ -22,14 +22,14 @@
 }
 
 .heading {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   text-align: center;
   font-size: 40px;
 }
 
 .subHeading {
   text-align: center;
-  font-family: "Satisfy", cursive;
+  font-family: 'Satisfy', cursive;
   font-size: 22px;
   position: absolute;
   bottom: -18px;

@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
-import { RegistrationForm } from "./Form";
-import AppNavLink from 'components/ui/appNavLink';
-import { PUBLIC_PAGES } from 'constants/pages';
+import { Typography } from '@mui/material'
+import AppNavLink from 'components/ui/appNavLink'
+import { PUBLIC_PAGES } from 'constants/pages'
+import { RegistrationForm } from './Form'
 
 const Registration = () => {
   return (
@@ -10,14 +10,14 @@ const Registration = () => {
         Welcome to Registration
       </Typography>
       <Typography paragraph>
-        Already have an account?{" "}
+        Already have an account?{' '}
         <AppNavLink primary to={PUBLIC_PAGES.login}>
           Login
         </AppNavLink>
       </Typography>
       <RegistrationForm />
     </>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration
