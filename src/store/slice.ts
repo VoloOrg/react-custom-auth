@@ -27,6 +27,11 @@ export const profileSlice = createSlice({
         ...payload,
       }
     },
+    setIsLoggedIn: (state, { payload }: PayloadAction<ProfileActionPayloads['setIsLoggedIn']>) => {
+      console.log({payload});
+      
+      state.isLoggedIn = payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,12 +41,14 @@ export const profileSlice = createSlice({
       .addMatcher(isFulfilledAction, (state) => {
         state.isPending = false
       })
-      .addMatcher(isRejectedAction, (state) => {
+      .addMatcher(isRejectedAction, (state, payload) => {
+        console.log({state, payload});
+        
         state.isPending = false
       })
   },
 })
 
-export const { setProfileData } = profileSlice.actions
+export const { setProfileData, setIsLoggedIn } = profileSlice.actions
 
 export default profileSlice.reducer

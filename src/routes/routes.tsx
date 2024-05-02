@@ -2,6 +2,7 @@ import { Navigate, RouteObject } from 'react-router-dom'
 import Error from 'components/ui/error'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
 import { ConfirmationPage, ForgotPasswordPage, HomePage, LoginPage, RegistrationPage } from './Pages'
+// import { ProtectedRoute } from './ProtectedRoute'
 
 export const PUBLIC_ROUTES: RouteObject[] = [
   {
@@ -34,7 +35,7 @@ export const PUBLIC_ROUTES: RouteObject[] = [
 export const PRIVATE_ROUTES: RouteObject[] = [
   {
     path: PRIVATE_PAGES.home,
-    element: HomePage,
+    element: HomePage
   },
   { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
 ]

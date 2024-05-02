@@ -14,4 +14,5 @@ export type Profile = {
 
 export type ProfileActionPayloads = {
   setProfileData: Partial<Profile>
+  setIsLoggedIn: ProfileSlice['isLoggedIn']
 }

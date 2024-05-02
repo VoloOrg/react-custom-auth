@@ -12,9 +12,3 @@ export const LOGIN_FORM_VALIDATION_SCHEMA = object({
   password: COMMON_SCHEMA_GENERATORS.password,
   rememberMe: boolean(),
 })
-
-export const AUTH_PAGES = {
-  login: 'login',
-  registration: 'registration',
-  forgotPassword: 'forgotPassword',
-}

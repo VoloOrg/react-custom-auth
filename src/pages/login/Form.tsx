@@ -5,17 +5,21 @@ import AppNavLink from 'components/ui/appNavLink'
 import { LOGIN_FORM_INITIAL_VALUES, LOGIN_FORM_VALIDATION_SCHEMA } from 'constants/auth/login'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
 import { useFormik } from 'formik'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { loginThunk } from 'store/thunk'
 
 export const LoginForm: FC = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: LOGIN_FORM_INITIAL_VALUES,
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
-    onSubmit: (values) => {
-      console.log({ values })
-
-      navigate(PRIVATE_PAGES.home)
+    onSubmit: async (values) => {
+      const res = await dispatch(loginThunk(values)).unwrap()
+      if (res.id) {
+        navigate(PRIVATE_PAGES.home)
+      }
     },
   })
 
