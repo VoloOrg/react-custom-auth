@@ -5,7 +5,7 @@ export const LOGIN_FORM_INITIAL_VALUES = {
   email: '',
   password: '',
   rememberMe: false,
-}
+} as const
 
 export const LOGIN_FORM_VALIDATION_SCHEMA = object({
   email: COMMON_SCHEMA_GENERATORS.email,

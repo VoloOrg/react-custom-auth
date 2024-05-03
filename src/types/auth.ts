@@ -1,3 +1,7 @@
 import { Profile } from 'store/types';
 
-export type LoginCredentials = Pick<Profile, 'email'> & { password: string }
+export type LoginFormValues = {
+    email: Profile['email'],
+    password: string,
+    rememberMe: boolean,
+} 

@@ -1,5 +1,6 @@
-import { Action, PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProfileActionPayloads, ProfileSlice } from './types'
+import { isFulfilledAction, isPendingAction, isRejectedAction } from 'utils/store'
 
 const initialState: ProfileSlice = {
   data: {
@@ -12,10 +13,6 @@ const initialState: ProfileSlice = {
   isPending: false,
   errorMessage: '',
 }
-
-const isFulfilledAction = (action: Action) => action.type.endsWith('/fulfilled')
-const isPendingAction = (action: Action) => action.type.endsWith('/pending')
-const isRejectedAction = (action: Action) => action.type.endsWith('/rejected')
 
 export const profileSlice = createSlice({
   name: 'profile',

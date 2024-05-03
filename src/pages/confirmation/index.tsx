@@ -1,21 +1,21 @@
-import { useSearchParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
-import AppNavLink from 'components/ui/appNavLink'
-import { AUTH_CONFIRMATION_DETAILS } from 'constants/confirmations'
+import { PUBLIC_PAGES } from 'constants/pages'
 
 const Confirmation = () => {
-  const [searchParams] = useSearchParams()
-  const texts = AUTH_CONFIRMATION_DETAILS[searchParams.get('type') ?? 'register']
+  const location = useLocation()
+  const titleText =
+    location?.state?.origin === PUBLIC_PAGES.forgotPassword ? 'Follow the instructions' : 'Thank you for Registering!'
 
   return (
-    <Box>
-      <Typography variant="h3" mb={4}>
-        Please check your email
+    <Box textAlign="center">
+      <Typography variant="h4" gutterBottom>
+        {titleText}
       </Typography>
-      <Typography mb={1}>Recovery link has been sent to your email</Typography>
-      <AppNavLink primary to={texts.redirectUrl}>
-        {texts.buttonText}
-      </AppNavLink>
+      <Typography>
+        We've sent a confirmation email to the address you provided. Please check your inbox to confirm your email
+        address and complete the registration process.
+      </Typography>
     </Box>
   )
 }

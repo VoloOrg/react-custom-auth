@@ -4,7 +4,7 @@ import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
 import { ConfirmationPage, ForgotPasswordPage, HomePage, LoginPage, RegistrationPage } from './Pages'
 // import { ProtectedRoute } from './ProtectedRoute'
 
-export const PUBLIC_ROUTES: RouteObject[] = [
+export const ROUTES: RouteObject[] = [
   {
     path: PUBLIC_PAGES.login,
     element: LoginPage,
@@ -30,9 +30,6 @@ export const PUBLIC_ROUTES: RouteObject[] = [
     element: <Navigate to={PUBLIC_PAGES.login} />,
     errorElement: <Error />,
   },
-]
-
-export const PRIVATE_ROUTES: RouteObject[] = [
   {
     path: PRIVATE_PAGES.home,
     element: HomePage

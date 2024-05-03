@@ -1,5 +1,3 @@
-import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Box, Button, TextField } from '@mui/material'
 import {
   FORGOT_PASSWORD_FORM_INITIAL_VALUES,
@@ -7,18 +5,17 @@ import {
 } from 'constants/auth/forgotPassword'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { useFormik } from 'formik'
+import { useResetPassword } from 'hooks/useResetPassword'
+import { FC } from 'react'
 import AppNavLink from '../../components/ui/appNavLink'
 
 export const ForgotPasswordForm: FC = () => {
-  const navigate = useNavigate()
+  const resetPassword = useResetPassword()
 
   const formik = useFormik({
     initialValues: FORGOT_PASSWORD_FORM_INITIAL_VALUES,
     validationSchema: FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
-    onSubmit: (values) => {
-      console.log({ values })
-      navigate(PUBLIC_PAGES.confirmation)
-    },
+    onSubmit: resetPassword
   })
 
   return (

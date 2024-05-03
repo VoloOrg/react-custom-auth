@@ -5,7 +5,11 @@ const ForgotPassword = () => {
   return (
     <>
       <Typography align="center" variant="h4" gutterBottom>
-        Set a New Password
+        Forgot your password?
+      </Typography>
+      <Typography align="center" gutterBottom>
+        Please enter the email address associated with your account. <br /> We'll send you a link to reset your
+        password.
       </Typography>
       <ForgotPasswordForm />
     </>

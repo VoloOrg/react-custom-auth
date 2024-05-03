@@ -1,17 +1,21 @@
 import { FC } from 'react'
 import { Box, Button, Typography } from '@mui/material'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { selectProfileData } from 'store/selectors'
+import { useLogout } from 'hooks/useLogout'
 
 const HomePage: FC = () => {
-  const handleLogoutClick = () => {
-    console.log('logged out!')
-  }
+
+  const { firstName, lastName, email } = useAppSelector(selectProfileData)
+
+  const handleLogoutClick = useLogout()
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" flexDirection="column">
       <Typography align="center" variant="h4" gutterBottom>
-        Welcome to your profile
+        Welcome {firstName} {lastName}
       </Typography>
-      <Typography paragraph>Some description</Typography>
+      <Typography paragraph>{email}</Typography>
       <Button variant="contained" onClick={handleLogoutClick}>
         Log out
       </Button>
