@@ -1,14 +1,17 @@
+import { FC } from 'react'
+import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
+import { selectIsPending } from 'store/selectors'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { useRegister } from 'hooks/useRegister'
 import {
   REGISTRATION_FORM_INITIAL_VALUES,
   REGISTRATION_FORM_TEMPLATE,
   REGISTRATION_FORM_VALIDATION_SCHEMA,
 } from 'constants/auth/registration'
-import { useFormik } from 'formik'
-import { useRegister } from 'hooks/useRegister'
-import { FC } from 'react'
 
 export const RegistrationForm: FC = () => {
+  const isPending = useAppSelector(selectIsPending)
   const register = useRegister()
 
   const formik = useFormik({
@@ -28,6 +31,7 @@ export const RegistrationForm: FC = () => {
               type={type}
               name={name}
               placeholder={placeholder}
+              disabled={isPending}
               value={formik.values[name]}
               onChange={formik.handleChange}
               error={!!formik.errors[name]}
@@ -35,7 +39,7 @@ export const RegistrationForm: FC = () => {
             />
           )
         })}
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" disabled={isPending}>
           Register
         </Button>
       </Box>

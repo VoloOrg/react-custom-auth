@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
-import AppNavLink from 'components/ui/appNavLink'
 import { PUBLIC_PAGES } from 'constants/pages'
+import AppNavLink from 'components/ui/appNavLink'
 import { RegistrationForm } from './Form'
 
 const Registration = () => {

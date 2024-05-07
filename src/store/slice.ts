@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ProfileActionPayloads, ProfileSlice } from './types'
+import { PayloadAction, SerializedError, createSlice } from '@reduxjs/toolkit'
 import { isFulfilledAction, isPendingAction, isRejectedAction } from 'utils/store'
+import { ProfileActionPayloads, ProfileSlice } from './types'
 
 const initialState: ProfileSlice = {
   data: {
@@ -25,9 +25,10 @@ export const profileSlice = createSlice({
       }
     },
     setIsLoggedIn: (state, { payload }: PayloadAction<ProfileActionPayloads['setIsLoggedIn']>) => {
-      console.log({payload});
-      
       state.isLoggedIn = payload
+    },
+    resetErrorMessage: (state) => {
+      state.errorMessage = ''
     },
   },
   extraReducers: (builder) => {
@@ -38,14 +39,13 @@ export const profileSlice = createSlice({
       .addMatcher(isFulfilledAction, (state) => {
         state.isPending = false
       })
-      .addMatcher(isRejectedAction, (state, payload) => {
-        console.log({state, payload});
-        
+      .addMatcher(isRejectedAction, (state, action: PayloadAction<SerializedError>) => {
         state.isPending = false
+        state.errorMessage = action.payload.message ?? 'Rejected Action.'
       })
   },
 })
 
-export const { setProfileData, setIsLoggedIn } = profileSlice.actions
+export const { setProfileData, setIsLoggedIn, resetErrorMessage } = profileSlice.actions
 
 export default profileSlice.reducer

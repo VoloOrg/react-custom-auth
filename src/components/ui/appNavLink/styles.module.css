@@ -6,4 +6,9 @@
   &.secondary {
     color: var(--secondary-color);
   }
+
+  &.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
 }

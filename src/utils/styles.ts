@@ -1,4 +1,4 @@
-export const combineClassNames = (...classNames: (string | false)[]): string => {
+export const combineClassNames = (...classNames: (string | false | undefined)[]): string => {
   if (!classNames?.length) return ''
   return classNames.filter((className) => !!className).join(' ')
 }

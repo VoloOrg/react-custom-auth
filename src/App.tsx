@@ -9,7 +9,10 @@ function App() {
       <MuiThemeProvider>
         <Box display="flex" height="100dvh" alignItems="center" justifyContent="center">
           <Box color="primary.main" width="100%" maxWidth={600}>
+            {/* <ErrorBoundary> */}
+
             <Router />
+            {/* </ErrorBoundary> */}
           </Box>
         </Box>
       </MuiThemeProvider>

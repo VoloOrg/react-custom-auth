@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { Box, Button, Typography } from '@mui/material'
-import { useAppSelector } from 'hooks/useAppSelector'
 import { selectProfileData } from 'store/selectors'
+import { useAppSelector } from 'hooks/useAppSelector'
 import { useLogout } from 'hooks/useLogout'
 
 const HomePage: FC = () => {
-
   const { firstName, lastName, email } = useAppSelector(selectProfileData)
 
   const handleLogoutClick = useLogout()

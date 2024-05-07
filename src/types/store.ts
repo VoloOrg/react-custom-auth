@@ -1,5 +1,5 @@
-import { SerializedError } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from 'store/main';
+import { SerializedError } from '@reduxjs/toolkit'
+import { AppDispatch, RootState } from 'store/main'
 
 export type ThunkConfig = {
   state: RootState

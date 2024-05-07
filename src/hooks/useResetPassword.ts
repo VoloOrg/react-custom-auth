@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { resetPasswordThunk } from 'store/thunk'
+import { Profile } from 'store/types'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
 import { useAppDispatch } from './useAppDispatch'
-import { Profile } from 'store/types'
 
 export const useResetPassword = () => {
   const navigate = useNavigate()

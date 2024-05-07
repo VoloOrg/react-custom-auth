@@ -1,7 +1,7 @@
-import { Profile } from 'store/types';
+import { Profile } from 'store/types'
 
 export type LoginFormValues = {
-    email: Profile['email'],
-    password: string,
-    rememberMe: boolean,
-} 
+  email: Profile['email']
+  password: string
+  rememberMe: boolean
+}
