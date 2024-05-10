@@ -5,8 +5,8 @@ import { selectIsPending } from 'store/selectors'
 import { useAppSelector } from 'hooks/useAppSelector'
 import { useLogin } from 'hooks/useLogin'
 import { LOGIN_FORM_INITIAL_VALUES, LOGIN_FORM_VALIDATION_SCHEMA } from 'constants/auth/login'
-import AppNavLink from 'components/ui/appNavLink'
 import { PUBLIC_PAGES } from 'constants/pages'
+import AppNavLink from 'components/ui/appNavLink'
 
 export const LoginForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)

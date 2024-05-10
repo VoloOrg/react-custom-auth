@@ -15,7 +15,7 @@ export type Profile = {
   role: Role
 }
 
-export type Role = typeof ROLES[keyof typeof ROLES]
+export type Role = (typeof ROLES)[keyof typeof ROLES]
 
 export type ProfileActionPayloads = {
   setProfileData: Partial<Profile>

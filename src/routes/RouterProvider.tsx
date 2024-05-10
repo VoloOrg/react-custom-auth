@@ -4,7 +4,7 @@ import { ROUTES } from './routes'
 
 const Router: FC = () => {
   const router = createBrowserRouter(ROUTES)
-  
+
   return <RouterProvider router={router} />
 }
 

@@ -1,6 +1,14 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
-import { ConfirmationPage, ForgotPasswordPage, HomePage, InvitationConfirmedPage, InvitationPage, LoginPage, RegistrationPage } from './Pages'
+import {
+  ConfirmationPage,
+  ForgotPasswordPage,
+  HomePage,
+  InvitationConfirmedPage,
+  InvitationPage,
+  LoginPage,
+  RegistrationPage,
+} from './Pages'
 import RouterErrorElement from './RouterErrorElement'
 import RoutesContainer from './RoutesContainer'
 

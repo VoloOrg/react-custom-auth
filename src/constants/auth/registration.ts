@@ -1,5 +1,5 @@
-import { generateRequiredStringSchema } from 'utils/commons'
 import { object, ref } from 'yup'
+import { generateRequiredStringSchema } from 'utils/commons'
 import { COMMON_SCHEMA_GENERATORS } from './commons'
 
 export const REGISTRATION_FORM_INITIAL_VALUES = {

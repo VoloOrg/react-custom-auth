@@ -1,6 +1,6 @@
-import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { Profile } from 'store/types'
 import { InvitationFormValues, LoginFormValues } from 'types/auth'
+import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 
 export const login = async (credentials: LoginFormValues) => {
   // const { data } = await axiosInstance.post<Profile>(`/login`, credentials)

@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <>
       <Typography align="center" variant="h4" gutterBottom>
-        You Are Welcome 
+        You Are Welcome
       </Typography>
       <LoginForm />
     </>

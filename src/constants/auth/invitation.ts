@@ -1,6 +1,6 @@
-import { object, mixed } from 'yup'
-import { COMMON_SCHEMA_GENERATORS } from './commons'
+import { mixed, object } from 'yup'
 import { ROLES } from 'constants/profile'
+import { COMMON_SCHEMA_GENERATORS } from './commons'
 
 export const INVITATION_FORM_INITIAL_VALUES = {
   email: '',

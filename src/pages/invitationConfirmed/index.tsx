@@ -5,17 +5,16 @@ import AppNavLink from 'components/ui/appNavLink'
 
 const InvitationConfirmed = () => {
   const location = useLocation()
-  const invitationData =
-    location?.state?.invitationData
+  const invitationData = location?.state?.invitationData
   return (
     <Box textAlign="center">
       <Typography variant="h4" gutterBottom>
-        Invitation is Sent! 
+        Invitation is Sent!
       </Typography>
       <Typography>
-      You have successfully invited {invitationData.email} with a role {invitationData.role}
+        You have successfully invited {invitationData.email} with a role {invitationData.role}
       </Typography>
-      <Box display='flex' gap={2} justifyContent='center' marginTop={1}>
+      <Box display="flex" gap={2} justifyContent="center" marginTop={1}>
         <AppNavLink primary to={PRIVATE_PAGES.home}>
           Back to Profile
         </AppNavLink>

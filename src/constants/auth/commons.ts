@@ -1,5 +1,5 @@
-import { ROLES } from 'constants/profile'
 import { Profile } from 'store/types'
+import { ROLES } from 'constants/profile'
 import { generateRequiredStringSchema } from 'utils/commons'
 
 export const COMMON_SCHEMA_GENERATORS = {
@@ -12,5 +12,5 @@ export const PROFILE_INITIAL_DATA: Profile = {
   email: '',
   firstName: '',
   lastName: '',
-  role: ROLES.admin
+  role: ROLES.admin,
 }

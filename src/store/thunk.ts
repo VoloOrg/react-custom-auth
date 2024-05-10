@@ -1,10 +1,10 @@
 import { invite, login, logout, register, sendForgotPasswordInstruction } from 'api/auth'
+import { getProfile } from 'api/profile'
 import { LoginFormValues } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
-import { getProfile } from 'api/profile'
 
 export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   'login',
@@ -59,7 +59,7 @@ export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
     try {
       const profileData = {
         ...getState().data,
-        email
+        email,
       }
 
       await sendForgotPasswordInstruction(profileData)
@@ -90,14 +90,12 @@ export const getProfileThunk = createAppAsyncThunk<Profile, void>(
   'getProfile',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      
       const profile = await getProfile()
       dispatch(setProfileData(profile))
 
       dispatch(setIsLoggedIn(true))
 
       return profile
-
     } catch (e) {
       return rejectWithValue(e as Error)
     }

@@ -34,9 +34,9 @@ export const ForgotPasswordForm: FC = () => {
           error={!!formik.errors.email}
           helperText={formik.errors.email}
         />
-        <Box display="flex" >
+        <Box display="flex">
           <AppNavLink primary to={PUBLIC_PAGES.login} disabled={isPending}>
-          {isLoggedIn ? 'Back to Profile' : 'Login'}
+            {isLoggedIn ? 'Back to Profile' : 'Login'}
           </AppNavLink>
         </Box>
         <Button type="submit" variant="contained" disabled={isPending}>

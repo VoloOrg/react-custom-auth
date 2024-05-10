@@ -8,4 +8,6 @@ export const ConfirmationPage = WithSuspense(lazy(() => import('pages/confirmati
 export const ForgotPasswordPage = WithSuspense(lazy(() => import('pages/forgotPassword')))
 export const HomePage = <ProtectedRoute>{WithSuspense(lazy(() => import('pages/home')))}</ProtectedRoute>
 export const InvitationPage = <ProtectedRoute>{WithSuspense(lazy(() => import('pages/invitation')))}</ProtectedRoute>
-export const InvitationConfirmedPage = <ProtectedRoute>{WithSuspense(lazy(() => import('pages/invitationConfirmed')))}</ProtectedRoute>
+export const InvitationConfirmedPage = (
+  <ProtectedRoute>{WithSuspense(lazy(() => import('pages/invitationConfirmed')))}</ProtectedRoute>
+)
