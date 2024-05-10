@@ -1,3 +1,4 @@
+import { ROLES } from 'constants/profile'
 import { Profile } from 'store/types'
 import { generateRequiredStringSchema } from 'utils/commons'
 
@@ -11,4 +12,5 @@ export const PROFILE_INITIAL_DATA: Profile = {
   email: '',
   firstName: '',
   lastName: '',
+  role: ROLES.admin
 }

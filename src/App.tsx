@@ -8,11 +8,8 @@ function App() {
     <StoreProvider>
       <MuiThemeProvider>
         <Box display="flex" height="100dvh" alignItems="center" justifyContent="center">
-          <Box color="primary.main" width="100%" maxWidth={600}>
-            {/* <ErrorBoundary> */}
-
+          <Box color="primary.main" width="100%" boxSizing="border-box" padding="40px" maxWidth={600}>
             <Router />
-            {/* </ErrorBoundary> */}
           </Box>
         </Box>
       </MuiThemeProvider>

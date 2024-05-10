@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Outlet } from 'react-router-dom'
 import { Alert, Snackbar } from '@mui/material'
 import { selectErrorMessage } from 'store/selectors'
 import { resetErrorMessage } from 'store/slice'
@@ -13,14 +12,11 @@ const FloatingError: FC = () => {
   const resetError = () => dispatch(resetErrorMessage())
 
   return (
-    <>
-      <Snackbar open={!!errorMessage} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={resetError}>
-        <Alert severity="error" variant="filled" onClose={resetError}>
-          {errorMessage}
-        </Alert>
-      </Snackbar>
-      <Outlet />
-    </>
+    <Snackbar open={!!errorMessage} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={resetError}>
+      <Alert severity="error" variant="filled" onClose={resetError}>
+        {errorMessage}
+      </Alert>
+    </Snackbar>
   )
 }
 

@@ -10,16 +10,15 @@ import useLocalStorage from './useLocalStorage'
 export const useLogin = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [, setRememberMe] = useLocalStorage('rememberMe', false)
+  const [, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
 
   return useCallback(
     async (values: LoginFormValues) => {
       const res = await dispatch(loginThunk(values))
       if (isRejectedAction(res)) return
-
-      if (values.rememberMe) setRememberMe(values.rememberMe)
+      setIsLoggedIn(true)
       navigate(PRIVATE_PAGES.home)
     },
-    [dispatch, navigate, setRememberMe]
+    [dispatch, navigate, setIsLoggedIn]
   )
 }

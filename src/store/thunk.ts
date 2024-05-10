@@ -1,9 +1,10 @@
-import { login, logout, register, sendResetPasswordInstruction } from 'api/auth'
+import { invite, login, logout, register, sendForgotPasswordInstruction } from 'api/auth'
 import { LoginFormValues } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
+import { getProfile } from 'api/profile'
 
 export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   'login',
@@ -52,13 +53,51 @@ export const logoutThunk = createAppAsyncThunk<void, void>(
   }
 )
 
-export const resetPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
-  'logout',
-  async (email, { rejectWithValue, dispatch }) => {
+export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
+  'forgotPassword',
+  async (email, { rejectWithValue, dispatch, getState }) => {
     try {
-      await sendResetPasswordInstruction(email)
+      const profileData = {
+        ...getState().data,
+        email
+      }
+
+      await sendForgotPasswordInstruction(profileData)
 
       dispatch(setProfileData(PROFILE_INITIAL_DATA))
+    } catch (e) {
+      return rejectWithValue(e as Error)
+    }
+  }
+)
+
+export const inviteUserThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'role'>>(
+  'forgotPassword',
+  async (invitationData, { rejectWithValue, dispatch, getState }) => {
+    try {
+      const profileData = getState().data
+
+      await invite(profileData, invitationData)
+
+      dispatch(setProfileData(PROFILE_INITIAL_DATA))
+    } catch (e) {
+      return rejectWithValue(e as Error)
+    }
+  }
+)
+
+export const getProfileThunk = createAppAsyncThunk<Profile, void>(
+  'getProfile',
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      
+      const profile = await getProfile()
+      dispatch(setProfileData(profile))
+
+      dispatch(setIsLoggedIn(true))
+
+      return profile
+
     } catch (e) {
       return rejectWithValue(e as Error)
     }

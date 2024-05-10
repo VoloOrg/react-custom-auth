@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 export default function useLocalStorage<T>(key: string, initialValue: T): [T, (x: T) => void, () => void] {
   const [storedValue, setStoredValue] = useState(() => {
@@ -32,5 +32,5 @@ export default function useLocalStorage<T>(key: string, initialValue: T): [T, (x
     }
   }, [key])
 
-  return [storedValue, setValue, removeValue]
+  return useMemo(() => [storedValue, setValue, removeValue], [storedValue, setValue, removeValue])
 }

@@ -1,12 +1,12 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
-import FloatingError from 'components/FloatingError'
-import { ConfirmationPage, ForgotPasswordPage, HomePage, LoginPage, RegistrationPage } from './Pages'
+import { ConfirmationPage, ForgotPasswordPage, HomePage, InvitationConfirmedPage, InvitationPage, LoginPage, RegistrationPage } from './Pages'
 import RouterErrorElement from './RouterErrorElement'
+import RoutesContainer from './RoutesContainer'
 
 export const ROUTES: RouteObject[] = [
   {
-    element: <FloatingError />,
+    element: <RoutesContainer />,
     errorElement: <RouterErrorElement />,
     children: [
       {
@@ -28,6 +28,14 @@ export const ROUTES: RouteObject[] = [
       {
         path: PRIVATE_PAGES.home,
         element: HomePage,
+      },
+      {
+        path: PRIVATE_PAGES.invitation,
+        element: InvitationPage,
+      },
+      {
+        path: PRIVATE_PAGES.invitationConfirmed,
+        element: InvitationConfirmedPage,
       },
       { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       {

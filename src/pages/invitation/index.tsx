@@ -1,15 +1,15 @@
 import { Typography } from '@mui/material'
-import { LoginForm } from './Form'
+import { InvitationForm } from './Form'
 
-const Login = () => {
+const Invitation = () => {
   return (
     <>
       <Typography align="center" variant="h4" gutterBottom>
-        You Are Welcome 
+        Invite User
       </Typography>
-      <LoginForm />
+      <InvitationForm />
     </>
   )
 }
 
-export default Login
+export default Invitation

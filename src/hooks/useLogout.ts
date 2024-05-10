@@ -9,7 +9,7 @@ import useLocalStorage from './useLocalStorage'
 export const useLogout = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [, , removeRememberMeFlag] = useLocalStorage('rememberMe', false)
+  const [,, removeRememberMeFlag] = useLocalStorage('isLoggedIn', false)
 
   return useCallback(async () => {
     const res = await dispatch(logoutThunk())
