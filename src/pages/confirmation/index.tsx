@@ -1,27 +1,23 @@
-import { useLocation } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
-import { PUBLIC_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
+import { PUBLIC_PAGES } from 'constants/pages'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { selectIsLoggedIn } from 'store/selectors'
 
 const Confirmation = () => {
-  const location = useLocation()
-  const titleText =
-    location?.state?.origin === PUBLIC_PAGES.forgotPassword
-      ? 'Follow the Instructions in the Email'
-      : 'Thank you for Registering!'
-
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
   return (
     <Box textAlign="center">
       <Typography variant="h4" gutterBottom>
-        {titleText}
+        Follow the Instructions in the Email.
       </Typography>
       <Typography>
         We've sent a confirmation email to the address you provided. Please check your inbox to confirm your email
-        address and complete the registration process.
+        address and complete the process.
       </Typography>
       <Box marginTop={1}>
         <AppNavLink primary to={PUBLIC_PAGES.login}>
-          Back to Login Page
+          Back to {isLoggedIn ? 'Profile' : 'Login'}
         </AppNavLink>
       </Box>
     </Box>

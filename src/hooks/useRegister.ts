@@ -18,11 +18,7 @@ export const useRegister = () => {
       const res = await dispatch(registerThunk(profileData))
       if (isRejectedAction(res)) return
 
-      navigate(PUBLIC_PAGES.confirmation, {
-        state: {
-          origin: PUBLIC_PAGES.registration,
-        },
-      })
+      navigate(PUBLIC_PAGES.confirmation)
     },
     [dispatch, navigate]
   )

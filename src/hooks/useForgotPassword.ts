@@ -15,11 +15,7 @@ export const useForgotPassword = () => {
       const res = await dispatch(forgotPasswordThunk(values.email))
       if (isRejectedAction(res)) return
 
-      navigate(PUBLIC_PAGES.confirmation, {
-        state: {
-          origin: PUBLIC_PAGES.forgotPassword,
-        },
-      })
+      navigate(PUBLIC_PAGES.confirmation)
     },
     [dispatch, navigate]
   )

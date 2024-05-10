@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { PRIVATE_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
 
-const InvitationConfirmed = () => {
+const InvitationConfirm = () => {
   const location = useLocation()
   const invitationData = location?.state?.invitationData
   return (
@@ -26,4 +26,4 @@ const InvitationConfirmed = () => {
   )
 }
 
-export default InvitationConfirmed
+export default InvitationConfirm

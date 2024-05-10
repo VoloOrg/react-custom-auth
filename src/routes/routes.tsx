@@ -26,8 +26,8 @@ export const ROUTES: RouteObject[] = [
         element: ForgotPasswordPage,
       },
       {
-        path: PUBLIC_PAGES.registration,
-        element: RegistrationPage,
+        path: PUBLIC_PAGES.resetPassword,
+        element: ResetPasswordPage,
       },
       {
         path: PUBLIC_PAGES.confirmation,
@@ -42,8 +42,12 @@ export const ROUTES: RouteObject[] = [
         element: InvitationPage,
       },
       {
-        path: PRIVATE_PAGES.invitationConfirmed,
+        path: PRIVATE_PAGES.invitationConfirm,
         element: InvitationConfirmedPage,
+      },
+      {
+        path: PRIVATE_PAGES.registration,
+        element: RegistrationPage,
       },
       { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       {

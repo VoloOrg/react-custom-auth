@@ -15,7 +15,7 @@ export const useInvite = () => {
       const res = await dispatch(inviteUserThunk(values))
       if (isRejectedAction(res)) return
 
-      navigate(PRIVATE_PAGES.invitationConfirmed, {
+      navigate(PRIVATE_PAGES.invitationConfirm, {
         state: {
           invitationData: values,
         },
