@@ -1,6 +1,6 @@
-import { invite, login, logout, register, sendForgotPasswordInstruction } from 'api/auth'
+import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction } from 'api/auth'
 import { getProfile } from 'api/profile'
-import { LoginFormValues } from 'types/auth'
+import { LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
@@ -55,31 +55,36 @@ export const logoutThunk = createAppAsyncThunk<void, void>(
 
 export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
   'forgotPassword',
-  async (email, { rejectWithValue, dispatch, getState }) => {
+  async (email, { rejectWithValue, getState }) => {
     try {
       const profileData = {
         ...getState().data,
         email,
       }
-
       await sendForgotPasswordInstruction(profileData)
-
-      dispatch(setProfileData(PROFILE_INITIAL_DATA))
     } catch (e) {
       return rejectWithValue(e as Error)
     }
   }
 )
 
-export const inviteUserThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'role'>>(
-  'forgotPassword',
-  async (invitationData, { rejectWithValue, dispatch, getState }) => {
+export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFormValues, 'confirmNewPassword'>>(
+  'resetPassword',
+  async (passwords, { rejectWithValue }) => {
+    try {
+      await resetPassword(passwords)
+    } catch (e) {
+      return rejectWithValue(e as Error)
+    }
+  }
+)
+
+export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'role'>>(
+  'invite',
+  async (invitationData, { rejectWithValue, getState }) => {
     try {
       const profileData = getState().data
-
       await invite(profileData, invitationData)
-
-      dispatch(setProfileData(PROFILE_INITIAL_DATA))
     } catch (e) {
       return rejectWithValue(e as Error)
     }

@@ -8,7 +8,7 @@ function App() {
     <StoreProvider>
       <MuiThemeProvider>
         <Box display="flex" height="100dvh" alignItems="center" justifyContent="center">
-          <Box color="primary.main" width="100%" boxSizing="border-box" padding="40px" maxWidth={600}>
+          <Box color="primary.main" width="100%" boxSizing="border-box" padding="40px" maxWidth={700}>
             <Router />
           </Box>
         </Box>

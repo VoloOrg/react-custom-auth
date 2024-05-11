@@ -1,42 +1,53 @@
 import { FC } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
-import { selectIsLoggedIn, selectIsPending } from 'store/selectors'
+import { selectIsPending } from 'store/selectors'
 import { useAppSelector } from 'hooks/useAppSelector'
-import { useForgotPassword } from 'hooks/useForgotPassword'
+import { useResetPassword } from 'hooks/useResetPassword'
 import {
-  FORGOT_PASSWORD_FORM_INITIAL_VALUES,
-  FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
-} from 'constants/auth/forgotPassword'
+  RESET_PASSWORD_FORM_INITIAL_VALUES,
+  RESET_PASSWORD_FORM_TEMPLATE,
+  RESET_PASSWORD_FORM_VALIDATION_SCHEMA,
+} from 'constants/auth/resetPassword'
 import { PUBLIC_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
 
 export const ResetPasswordForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)
-  const isLoggedIn = useAppSelector(selectIsLoggedIn)
-  const forgotPassword = useForgotPassword()
+  const location = useLocation()
+  const isFromProfile = location?.state?.origin === 'profile'
+  const resetPassword = useResetPassword()
 
   const formik = useFormik({
-    initialValues: FORGOT_PASSWORD_FORM_INITIAL_VALUES,
-    validationSchema: FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
-    onSubmit: forgotPassword,
+    initialValues: RESET_PASSWORD_FORM_INITIAL_VALUES,
+    validationSchema: RESET_PASSWORD_FORM_VALIDATION_SCHEMA,
+    onSubmit: resetPassword,
   })
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box display="flex" flexDirection="column" gap={2}>
-        <TextField
-          name="email"
-          placeholder="Enter Email"
-          disabled={isPending}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={!!formik.errors.email}
-          helperText={formik.errors.email}
-        />
-        <Box display="flex">
-          <AppNavLink primary to={PUBLIC_PAGES.login} disabled={isPending}>
-            {isLoggedIn ? 'Back to Profile' : 'Login'}
+        {RESET_PASSWORD_FORM_TEMPLATE.map((field) => {
+          const { name, placeholder } = field
+          if (!isFromProfile && field.name === 'oldPassword') return
+          return (
+            <TextField
+              key={name}
+              type="password"
+              name={name}
+              placeholder={placeholder}
+              disabled={isPending}
+              value={formik.values[name]}
+              onChange={formik.handleChange}
+              error={!!formik.errors[name]}
+              helperText={formik.errors[name]}
+            />
+          )
+        })}
+        <Box marginLeft="auto">
+          <AppNavLink primary to={PUBLIC_PAGES.forgotPassword} disabled={isPending}>
+            Forgot Password
           </AppNavLink>
         </Box>
         <Button type="submit" variant="contained" disabled={isPending}>

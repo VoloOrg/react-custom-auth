@@ -24,7 +24,7 @@ const HomePage: FC = () => {
         </AppNavLink>
       )}
       <Box>
-        <AppNavLink primary to={PUBLIC_PAGES.forgotPassword} disabled={isPending}>
+        <AppNavLink primary to={PUBLIC_PAGES.resetPassword} state={{ origin: 'profile' }} disabled={isPending}>
           Reset Password
         </AppNavLink>
       </Box>

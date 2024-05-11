@@ -6,3 +6,9 @@ export type LoginFormValues = {
 }
 
 export type InvitationFormValues = Pick<Profile, 'email' | 'role'>
+
+export type ResetPasswordFormValues = {
+  oldPassword?: string
+  newPassword: string
+  confirmNewPassword: string
+}

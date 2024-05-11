@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material'
-import AppNavLink from 'components/ui/appNavLink'
-import { PUBLIC_PAGES } from 'constants/pages'
-import { useAppSelector } from 'hooks/useAppSelector'
 import { selectIsLoggedIn } from 'store/selectors'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { PUBLIC_PAGES } from 'constants/pages'
+import AppNavLink from 'components/ui/appNavLink'
 
 const Confirmation = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn)

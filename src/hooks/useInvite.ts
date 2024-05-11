@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { inviteUserThunk } from 'store/thunk'
+import { inviteThunk } from 'store/thunk'
 import { Profile } from 'store/types'
 import { PRIVATE_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
@@ -12,7 +12,7 @@ export const useInvite = () => {
 
   return useCallback(
     async (values: Pick<Profile, 'email' | 'role'>) => {
-      const res = await dispatch(inviteUserThunk(values))
+      const res = await dispatch(inviteThunk(values))
       if (isRejectedAction(res)) return
 
       navigate(PRIVATE_PAGES.invitationConfirm, {

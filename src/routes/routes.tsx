@@ -8,6 +8,7 @@ import {
   InvitationPage,
   LoginPage,
   RegistrationPage,
+  ResetPasswordPage,
 } from './Pages'
 import RouterErrorElement from './RouterErrorElement'
 import RoutesContainer from './RoutesContainer'

@@ -1,5 +1,5 @@
 import { Profile } from 'store/types'
-import { InvitationFormValues, LoginFormValues } from 'types/auth'
+import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 
 export const login = async (credentials: LoginFormValues) => {
@@ -28,6 +28,13 @@ export const logout = async (profileData: Profile) => {
 export const sendForgotPasswordInstruction = async (profileData: Profile) => {
   // const { data } = await axiosInstance.delete<Profile>(`/forgotPassword`, profileData)
   console.log({ profileData })
+
+  return true
+}
+
+export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'confirmNewPassword'>) => {
+  // const { data } = await axiosInstance.post<Profile>(`/resetPassword`, passwords)
+  console.log({ passwords })
 
   return true
 }
