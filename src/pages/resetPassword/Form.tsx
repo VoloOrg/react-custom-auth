@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
 import { selectIsLoggedIn, selectIsPending } from 'store/selectors'
-import { useAppSelector } from 'hooks/useAppSelector'
 import { useResetPassword } from 'hooks/auth/useResetPassword'
+import { useAppSelector } from 'hooks/useAppSelector'
 import {
   RESET_PASSWORD_FORM_INITIAL_VALUES,
   RESET_PASSWORD_FORM_TEMPLATE,
@@ -46,7 +46,7 @@ export const ResetPasswordForm: FC = () => {
             />
           )
         })}
-        <Box display='flex' justifyContent='space-between'>
+        <Box display="flex" justifyContent="space-between">
           <AppNavLink primary to={PRIVATE_PAGES.home} disabled={isPending}>
             {isLoggedIn ? 'Profile' : 'Login'}
           </AppNavLink>

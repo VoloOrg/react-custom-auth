@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
 import { selectIsLoggedIn, selectIsPending } from 'store/selectors'
-import { useAppSelector } from 'hooks/useAppSelector'
 import { useForgotPassword } from 'hooks/auth/useForgotPassword'
+import { useAppSelector } from 'hooks/useAppSelector'
 import {
   FORGOT_PASSWORD_FORM_INITIAL_VALUES,
   FORGOT_PASSWORD_FORM_VALIDATION_SCHEMA,
@@ -36,7 +36,7 @@ export const ForgotPasswordForm: FC = () => {
         />
         <Box display="flex">
           <AppNavLink primary to={PUBLIC_PAGES.login} disabled={isPending}>
-            {isLoggedIn ? 'Profile' : 'Login'} 
+            {isLoggedIn ? 'Profile' : 'Login'}
           </AppNavLink>
         </Box>
         <Button type="submit" variant="contained" disabled={isPending}>

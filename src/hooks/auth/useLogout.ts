@@ -13,7 +13,7 @@ export const useLogout = () => {
 
   return useCallback(async () => {
     const res = await dispatch(logoutThunk())
-    if (isRejectedAction(res)) return;
+    if (isRejectedAction(res)) return
 
     removeRememberMeFlag()
     navigate(PUBLIC_PAGES.login)
