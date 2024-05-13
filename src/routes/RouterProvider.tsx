@@ -32,10 +32,6 @@ const Router: FC = () => {
       },
       children: [
         {
-          path: PUBLIC_PAGES.login,
-          element: LoginPage,
-        },
-        {
           path: PRIVATE_PAGES.home,
           element: HomePage,
         },
@@ -47,12 +43,16 @@ const Router: FC = () => {
       ],
     },
     {
-      path: PUBLIC_PAGES.forgotPassword,
-      element: ForgotPasswordPage,
+      path: PUBLIC_PAGES.login,
+      element: LoginPage,
     },
     {
       path: PUBLIC_PAGES.resetPassword,
       element: ResetPasswordPage,
+    },
+    {
+      path: PUBLIC_PAGES.forgotPassword,
+      element: ForgotPasswordPage,
     },
     {
       path: PUBLIC_PAGES.confirmation,

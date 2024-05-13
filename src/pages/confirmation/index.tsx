@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material'
-import { selectIsLoggedIn } from 'store/selectors'
-import { useAppSelector } from 'hooks/useAppSelector'
-import { PUBLIC_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
+import { PRIVATE_PAGES } from 'constants/pages'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { selectIsLoggedIn } from 'store/selectors'
 
 const Confirmation = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
@@ -16,7 +16,7 @@ const Confirmation = () => {
         address and complete the process.
       </Typography>
       <Box marginTop={1}>
-        <AppNavLink primary to={PUBLIC_PAGES.login}>
+        <AppNavLink primary to={PRIVATE_PAGES.home}>
           Back to {isLoggedIn ? 'Profile' : 'Login'}
         </AppNavLink>
       </Box>

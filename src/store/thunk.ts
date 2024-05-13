@@ -98,8 +98,6 @@ export const getProfileThunk = createAppAsyncThunk<Profile, void>(
       const profile = await getProfile()
       dispatch(setProfileData(profile))
 
-      dispatch(setIsLoggedIn(true))
-
       return profile
     } catch (e) {
       return rejectWithValue(e as Error)

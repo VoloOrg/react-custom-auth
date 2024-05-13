@@ -15,20 +15,20 @@ const HomePage: FC = () => {
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={1}>
-      <Typography align="center" variant="h4" gutterBottom>
+      <Typography align="center" variant="h4">
         Welcome {firstName} {lastName}
       </Typography>
+      <Typography paragraph>{email}</Typography>
       {role === ROLES.admin && (
         <AppNavLink primary to={PRIVATE_PAGES.invitation}>
           Invite
         </AppNavLink>
       )}
-      <Box>
+      <Box marginBottom={3}>
         <AppNavLink primary to={PUBLIC_PAGES.resetPassword} state={{ origin: 'profile' }} disabled={isPending}>
           Reset Password
         </AppNavLink>
       </Box>
-      <Typography paragraph>{email}</Typography>
       <Button variant="contained" onClick={handleLogoutClick} disabled={isPending}>
         Log out
       </Button>

@@ -13,13 +13,9 @@ export const useLogout = () => {
 
   return useCallback(async () => {
     const res = await dispatch(logoutThunk())
-    console.log('logout thunk dispatched and done:', {res});
-    
     if (isRejectedAction(res)) return;
 
     removeRememberMeFlag()
-    console.log('removed from local storage:', localStorage.getItem('isLoggedIn'));
-    
     navigate(PUBLIC_PAGES.login)
   }, [dispatch, navigate, removeRememberMeFlag])
 }
