@@ -16,7 +16,7 @@ export const useLogin = () => {
     async (values: LoginFormValues) => {
       const res = await dispatch(loginThunk(values))
       if (isRejectedAction(res)) return
-
+      
       setIsLoggedIn(true)
       navigate(PRIVATE_PAGES.home)
     },

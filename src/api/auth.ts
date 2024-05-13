@@ -2,6 +2,12 @@ import { Profile } from 'store/types'
 import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import { DEFAULT_ADMIN, PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 
+export const getIsLoggedIn = async () => {
+  // const { data } = await axiosInstance.get(`/isLoggedIn`)
+  
+  return true
+}
+
 export const login = async (credentials: LoginFormValues) => {
   // const { data } = await axiosInstance.post<Profile>(`/login`, credentials)
   console.log({ credentials })
