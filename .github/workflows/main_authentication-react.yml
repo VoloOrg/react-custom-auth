@@ -28,7 +28,7 @@ jobs:
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip dist
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -53,13 +53,13 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_EB6A8CA035124E019E77F77B2FB97927 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_222BCBE21B7E4D1C9D57F3C29407241C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E7B77BBF21A5419D8DAEF858E02E4592 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_18F9AFC8F2D3454085BC0084D758653D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA192A137B6F4F0985B09E1CBE2E5DE7 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4ECD9F0961C641679C0222172CDB1E67 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -68,3 +68,4 @@ jobs:
           app-name: 'authentication-react'
           slot-name: 'Production'
           package: .
+          
