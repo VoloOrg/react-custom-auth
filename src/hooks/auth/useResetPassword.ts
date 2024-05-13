@@ -4,7 +4,7 @@ import { resetPasswordThunk } from 'store/thunk'
 import { RESET_PASSWORD_FORM_INITIAL_VALUES } from 'constants/auth/resetPassword'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
-import { useAppDispatch } from './useAppDispatch'
+import { useAppDispatch } from '../useAppDispatch'
 
 export const useResetPassword = () => {
   const navigate = useNavigate()

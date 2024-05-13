@@ -8,7 +8,7 @@ const InvitationConfirm = () => {
   const invitationData = location?.state?.invitationData
   return (
     <Box textAlign="center">
-      <Typography variant="h4" gutterBottom>
+      <Typography align="center" variant="h4" gutterBottom>
         Invitation is Sent!
       </Typography>
       <Typography>

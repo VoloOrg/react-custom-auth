@@ -12,5 +12,13 @@ export const PROFILE_INITIAL_DATA: Profile = {
   email: '',
   firstName: '',
   lastName: '',
+  role: ROLES.general,
+}
+
+export const DEFAULT_ADMIN: Profile = {
+  id: '123456789',
+  email: 'test.admin@gmail.com',
+  firstName: 'John',
+  lastName: 'Doe',
   role: ROLES.admin,
 }

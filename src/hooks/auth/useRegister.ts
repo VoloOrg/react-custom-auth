@@ -4,7 +4,8 @@ import { registerThunk } from 'store/thunk'
 import { REGISTRATION_FORM_INITIAL_VALUES } from 'constants/auth/registration'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
-import { useAppDispatch } from './useAppDispatch'
+import { useAppDispatch } from '../useAppDispatch'
+import { ROLES } from 'constants/profile'
 
 export const useRegister = () => {
   const navigate = useNavigate()
@@ -15,7 +16,12 @@ export const useRegister = () => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { confirmPassword, ...profileData } = values
 
-      const res = await dispatch(registerThunk(profileData))
+      const res = await dispatch(registerThunk({
+        ...profileData,
+        role: ROLES.general
+
+      }))
+      
       if (isRejectedAction(res)) return
 
       navigate(PUBLIC_PAGES.confirmation)

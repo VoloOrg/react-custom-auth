@@ -8,7 +8,7 @@ const Confirmation = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
   return (
     <Box textAlign="center">
-      <Typography variant="h4" gutterBottom>
+      <Typography align="center" variant="h4" gutterBottom>
         Follow the Instructions in the Email.
       </Typography>
       <Typography>

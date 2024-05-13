@@ -45,8 +45,8 @@ export const logoutThunk = createAppAsyncThunk<void, void>(
       const { data } = getState()
       await logout(data)
 
-      dispatch(setProfileData(PROFILE_INITIAL_DATA))
       dispatch(setIsLoggedIn(false))
+      dispatch(setProfileData(PROFILE_INITIAL_DATA))
     } catch (e) {
       return rejectWithValue(e as Error)
     }

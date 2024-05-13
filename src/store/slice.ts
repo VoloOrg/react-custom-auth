@@ -5,7 +5,7 @@ import { ProfileActionPayloads, ProfileSlice } from './types'
 
 const initialState: ProfileSlice = {
   data: PROFILE_INITIAL_DATA,
-  isLoggedIn: false,
+  isLoggedIn: !!localStorage.getItem('isLoggedIn'),
   isPending: false,
   errorMessage: '',
 }

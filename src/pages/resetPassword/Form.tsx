@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
-import { selectIsPending } from 'store/selectors'
+import { selectIsLoggedIn, selectIsPending } from 'store/selectors'
 import { useAppSelector } from 'hooks/useAppSelector'
-import { useResetPassword } from 'hooks/useResetPassword'
+import { useResetPassword } from 'hooks/auth/useResetPassword'
 import {
   RESET_PASSWORD_FORM_INITIAL_VALUES,
   RESET_PASSWORD_FORM_TEMPLATE,
@@ -15,6 +15,7 @@ import AppNavLink from 'components/ui/appNavLink'
 
 export const ResetPasswordForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const location = useLocation()
   const isFromProfile = location?.state?.origin === 'profile'
   const resetPassword = useResetPassword()
@@ -30,7 +31,7 @@ export const ResetPasswordForm: FC = () => {
       <Box display="flex" flexDirection="column" gap={2}>
         {RESET_PASSWORD_FORM_TEMPLATE.map((field) => {
           const { name, placeholder } = field
-          if (!isFromProfile && field.name === 'oldPassword') return
+          if (field.name === 'oldPassword' && (!isFromProfile || !isLoggedIn)) return null
           return (
             <TextField
               key={name}
@@ -45,7 +46,10 @@ export const ResetPasswordForm: FC = () => {
             />
           )
         })}
-        <Box marginLeft="auto">
+        <Box display='flex' justifyContent='space-between'>
+          <AppNavLink primary to={PUBLIC_PAGES.forgotPassword} disabled={isPending}>
+            {isLoggedIn ? 'Profile' : 'Login'}
+          </AppNavLink>
           <AppNavLink primary to={PUBLIC_PAGES.forgotPassword} disabled={isPending}>
             Forgot Password
           </AppNavLink>

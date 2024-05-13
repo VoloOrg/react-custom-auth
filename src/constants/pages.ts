@@ -2,7 +2,6 @@ export const PRIVATE_PAGES = {
   home: '/',
   invitation: '/invite',
   invitationConfirm: '/invitationConfirm',
-  registration: '/registration',
 } as const
 
 export const PUBLIC_PAGES = {
@@ -10,4 +9,5 @@ export const PUBLIC_PAGES = {
   forgotPassword: '/forgot-password',
   resetPassword: '/resetPassword',
   confirmation: '/confirmation',
+  registration: '/registration',
 } as const

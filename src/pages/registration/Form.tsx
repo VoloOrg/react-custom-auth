@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import { Box, Button, TextField } from '@mui/material'
 import { selectIsPending } from 'store/selectors'
 import { useAppSelector } from 'hooks/useAppSelector'
-import { useRegister } from 'hooks/useRegister'
+import { useRegister } from 'hooks/auth/useRegister'
 import {
   REGISTRATION_FORM_INITIAL_VALUES,
   REGISTRATION_FORM_TEMPLATE,

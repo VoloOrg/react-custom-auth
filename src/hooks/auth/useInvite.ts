@@ -4,7 +4,7 @@ import { inviteThunk } from 'store/thunk'
 import { Profile } from 'store/types'
 import { PRIVATE_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
-import { useAppDispatch } from './useAppDispatch'
+import { useAppDispatch } from '../useAppDispatch'
 
 export const useInvite = () => {
   const navigate = useNavigate()

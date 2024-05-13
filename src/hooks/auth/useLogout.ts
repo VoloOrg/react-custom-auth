@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { logoutThunk } from 'store/thunk'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
-import { useAppDispatch } from './useAppDispatch'
-import useLocalStorage from './useLocalStorage'
+import { useAppDispatch } from '../useAppDispatch'
+import useLocalStorage from '../useLocalStorage'
 
 export const useLogout = () => {
   const navigate = useNavigate()
@@ -13,9 +13,13 @@ export const useLogout = () => {
 
   return useCallback(async () => {
     const res = await dispatch(logoutThunk())
-    if (isRejectedAction(res)) return
+    console.log('logout thunk dispatched and done:', {res});
+    
+    if (isRejectedAction(res)) return;
 
     removeRememberMeFlag()
+    console.log('removed from local storage:', localStorage.getItem('isLoggedIn'));
+    
     navigate(PUBLIC_PAGES.login)
   }, [dispatch, navigate, removeRememberMeFlag])
 }

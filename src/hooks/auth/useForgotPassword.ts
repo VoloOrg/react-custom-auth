@@ -4,7 +4,7 @@ import { forgotPasswordThunk } from 'store/thunk'
 import { Profile } from 'store/types'
 import { PUBLIC_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
-import { useAppDispatch } from './useAppDispatch'
+import { useAppDispatch } from '../useAppDispatch'
 
 export const useForgotPassword = () => {
   const navigate = useNavigate()
