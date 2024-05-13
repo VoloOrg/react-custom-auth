@@ -1,10 +1,25 @@
-import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction } from 'api/auth'
+import { getIsLoggedIn, invite, login, logout, register, resetPassword, sendForgotPasswordInstruction } from 'api/auth'
 import { getProfile } from 'api/profile'
 import { LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
+
+export const getIsLoggedInThunk = createAppAsyncThunk<boolean, void>(
+  'getIsLoggedIn',
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      const isLoggedIn = await getIsLoggedIn()
+
+      dispatch(setIsLoggedIn(isLoggedIn))
+
+      return isLoggedIn
+    } catch (e) {
+      return rejectWithValue(e as Error)
+    }
+  }
+)
 
 export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   'login',
