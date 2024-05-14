@@ -1,30 +1,29 @@
-import { Typography } from '@mui/material'
-import { LoginForm } from './Form'
-import { useAppDispatch } from 'hooks/useAppDispatch'
-import { getIsLoggedInThunk } from 'store/thunk'
-import useLocalStorage from 'hooks/useLocalStorage'
-import { useNavigate } from 'react-router-dom'
-import { PRIVATE_PAGES } from 'constants/pages'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Typography } from '@mui/material'
+import useLocalStorage from 'hooks/useLocalStorage'
+import { PRIVATE_PAGES } from 'constants/pages'
+import { LoginForm } from './Form'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { selectIsPending } from 'store/selectors'
+import { Loader } from 'components/ui/loader'
 
 const Login = () => {
-
-  const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const [, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
-  
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
+  const isPending = useAppSelector(selectIsPending)
+
   useEffect(() => {
     const redirectToProfileLoggedInUser = async () => {
-      const isLoggedIn = await dispatch(getIsLoggedInThunk())
-      console.log({isLoggedIn});
-      
-      if(isLoggedIn) {
+      if (isLoggedIn) {
         setIsLoggedIn(true)
         navigate(PRIVATE_PAGES.home)
       }
     }
     redirectToProfileLoggedInUser()
-  }, [dispatch, navigate, setIsLoggedIn])
+  }, [isLoggedIn, navigate, setIsLoggedIn])
+
+  if (isPending) return <Loader />
 
   return (
     <>
