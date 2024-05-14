@@ -1,11 +1,13 @@
 import { Profile } from 'store/types'
 import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import { DEFAULT_ADMIN, PROFILE_INITIAL_DATA } from 'constants/auth/commons'
+import { sleep } from 'utils/commons'
 
 export const getIsLoggedIn = async () => {
   // const { data } = await axiosInstance.get(`/isLoggedIn`)
-  
-  return true
+  console.log('requesting is auth')
+  await sleep(1000)
+  return false
 }
 
 export const login = async (credentials: LoginFormValues) => {
