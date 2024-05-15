@@ -32,6 +32,26 @@ const Router: FC = () => {
       },
       children: [
         {
+          path: PUBLIC_PAGES.login,
+          element: LoginPage,
+        },
+        {
+          path: PUBLIC_PAGES.resetPassword,
+          element: ResetPasswordPage,
+        },
+        {
+          path: PUBLIC_PAGES.forgotPassword,
+          element: ForgotPasswordPage,
+        },
+        {
+          path: PUBLIC_PAGES.confirmation,
+          element: ConfirmationPage,
+        },
+        {
+          path: PUBLIC_PAGES.registration,
+          element: RegistrationPage,
+        },
+        {
           path: PRIVATE_PAGES.home,
           element: HomePage,
         },
@@ -39,32 +59,12 @@ const Router: FC = () => {
           path: PRIVATE_PAGES.invitation,
           element: InvitationPage,
         },
+        {
+          path: PRIVATE_PAGES.invitationConfirm,
+          element: InvitationConfirmedPage,
+        },
         { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       ],
-    },
-    {
-      path: PUBLIC_PAGES.login,
-      element: LoginPage,
-    },
-    {
-      path: PUBLIC_PAGES.resetPassword,
-      element: ResetPasswordPage,
-    },
-    {
-      path: PUBLIC_PAGES.forgotPassword,
-      element: ForgotPasswordPage,
-    },
-    {
-      path: PUBLIC_PAGES.confirmation,
-      element: ConfirmationPage,
-    },
-    {
-      path: PUBLIC_PAGES.registration,
-      element: RegistrationPage,
-    },
-    {
-      path: PRIVATE_PAGES.invitationConfirm,
-      element: InvitationConfirmedPage,
     },
   ])
 

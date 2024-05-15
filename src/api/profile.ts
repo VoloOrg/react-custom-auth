@@ -1,14 +1,7 @@
 import { Profile } from 'store/types'
-import { DEFAULT_ADMIN } from 'constants/auth/commons'
-import { sleep } from 'utils/commons'
+import axiosInstance from 'utils/api'
 
 export const getProfile = async () => {
-  // const { data } = await axiosInstance.get(`/profile`)
-
-  console.log('requesting profile data')
-  await sleep(1000)
-
-  const data: Profile = DEFAULT_ADMIN
-
+  const { data } = await axiosInstance.get<Profile>(`/auth/account/CurrentUser`)
   return data
 }

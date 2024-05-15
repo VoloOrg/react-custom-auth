@@ -40,9 +40,10 @@ export const InvitationForm: FC = () => {
             label="Role"
             onChange={formik.handleChange}
           >
-            {Object.values(ROLES).map((role) => {
+            {(Object.keys(ROLES) as (keyof typeof ROLES)[]).map((role) => {
+              const value = ROLES[role];
               return (
-                <MenuItem key={role} value={role}>
+                <MenuItem key={role} value={value}>
                   {role}
                 </MenuItem>
               )
