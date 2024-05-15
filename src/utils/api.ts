@@ -1,8 +1,9 @@
 import axios from 'axios'
+console.log({__API_BASE});
 
 // Create an Axios instance with default options
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_BASE,
+  baseURL: __API_BASE,
   withCredentials: true,
 })
 

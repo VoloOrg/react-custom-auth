@@ -8,6 +8,7 @@ import { useAppSelector } from 'hooks/useAppSelector'
 const FloatingError: FC = () => {
   const dispatch = useAppDispatch()
   const errorMessage = useAppSelector(selectErrorMessage)
+console.log({errorMessage});
 
   const resetError = () => dispatch(resetErrorMessage())
 

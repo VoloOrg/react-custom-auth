@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loginThunk } from 'store/thunk'
+import { getProfileThunk, loginThunk } from 'store/thunk'
 import { LoginFormValues } from 'types/auth'
 import { PRIVATE_PAGES } from 'constants/pages'
 import { isRejectedAction } from 'utils/store'
@@ -14,8 +14,11 @@ export const useLogin = () => {
 
   return useCallback(
     async (values: LoginFormValues) => {
-      const res = await dispatch(loginThunk(values))
-      if (isRejectedAction(res)) return
+      const loginAction = await dispatch(loginThunk(values))
+      if (isRejectedAction(loginAction)) return
+      
+      const getProfileAction = await dispatch(getProfileThunk())
+      if (isRejectedAction(getProfileAction)) return
       
       setIsLoggedIn(true)
       navigate(PRIVATE_PAGES.home)
