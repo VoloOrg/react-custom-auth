@@ -17,14 +17,14 @@ export const register = async (profileData: Omit<Profile, 'id'>) => {
 }
 
 export const logout = async () => {
-  const res = await axiosInstance.get<Profile>(`/connect/logout`)
+  const res = await axiosInstance.get(`/connect/logout`)
   console.log({ res })
 
   return true
 }
 
 export const sendForgotPasswordInstruction = async (payload: Pick<Profile, 'email'>) => {
-  const res = await axiosInstance.get(`/connect/ForgotPassword`, { data: payload })
+  const res = await axiosInstance.post(`/connect/ForgotPassword`, payload)
   console.log({ res })
 
   return true
@@ -37,9 +37,9 @@ export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'co
   return true
 }
 
-export const invite = async (profileData: Profile, invitationData: InvitationFormValues) => {
-  // const { data } = await axiosInstance.post<Profile>(`/invite`, profileData)
-  console.log({ profileData, invitationData })
+export const invite = async (invitationData: InvitationFormValues) => {
+  const res = await axiosInstance.post(`/Account/InviteUser`, invitationData)
+  console.log({ res })
 
   return true
 }

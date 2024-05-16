@@ -36,8 +36,6 @@ export const profileSlice = createSlice({
         state.isPending = false
       })
       .addMatcher(isRejectedAction, (state, action: PayloadAction<SerializedError>) => {
-        console.log({action});
-        
         state.isPending = false
         state.errorMessage = action.payload.message ?? 'Rejected Action.'
       })

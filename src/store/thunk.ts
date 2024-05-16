@@ -56,13 +56,9 @@ export const logoutThunk = createAppAsyncThunk<void, void>(
 
 export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
   'forgotPassword',
-  async (email, { rejectWithValue, getState }) => {
+  async (email, { rejectWithValue }) => {
     try {
-      const profileData = {
-        ...getState().data,
-        email,
-      }
-      await sendForgotPasswordInstruction(profileData)
+      await sendForgotPasswordInstruction({ email })
     } catch (e) {
       return rejectWithValue(e as Error)
     }
@@ -82,10 +78,9 @@ export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFo
 
 export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'role'>>(
   'invite',
-  async (invitationData, { rejectWithValue, getState }) => {
+  async (invitationData, { rejectWithValue }) => {
     try {
-      const profileData = getState().data
-      await invite(profileData, invitationData)
+      await invite(invitationData)
     } catch (e) {
       return rejectWithValue(e as Error)
     }
@@ -97,6 +92,7 @@ export const getProfileThunk = createAppAsyncThunk<Profile, void>(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const profile = await getProfile()
+      
       dispatch(setProfileData(profile))
 
       return profile
