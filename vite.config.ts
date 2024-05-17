@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     define: {
-      __API_BASE: JSON.stringify(mode === 'production' ? "https://authentication-openiddict-api-react.azurewebsites.net" : "http://localhost:5200")
+      __API_BASE: JSON.stringify(mode === 'production' ? "https://authentication-openiddict-api.azurewebsites.net" : "http://localhost:5200")
     },
     server: {
       open: true,
