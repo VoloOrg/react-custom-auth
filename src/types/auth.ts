@@ -12,3 +12,9 @@ export type ResetPasswordFormValues = {
   newPassword: string
   confirmPassword: string
 }
+
+export type VerifyTokenThunkArgs = {
+  email: string,
+  token: string,
+  type: string
+}

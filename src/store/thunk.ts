@@ -1,6 +1,6 @@
-import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction } from 'api/auth'
+import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction, verifyToken } from 'api/auth'
 import { getProfile } from 'api/profile'
-import { LoginFormValues, ResetPasswordFormValues } from 'types/auth'
+import { LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
@@ -17,8 +17,6 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
 
       return profile
     } catch (e) {
-      console.log({ e })
-
       return rejectWithValue(e as Error)
     }
   }
@@ -78,6 +76,17 @@ export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'ro
   async (invitationData, { rejectWithValue }) => {
     try {
       await invite(invitationData)
+    } catch (e) {
+      return rejectWithValue(e as Error)
+    }
+  }
+)
+
+export const verifyTokenThunk = createAppAsyncThunk<void, VerifyTokenThunkArgs>(
+  'verifyToken',
+  async (data, { rejectWithValue }) => {
+    try {
+      await verifyToken(data)
     } catch (e) {
       return rejectWithValue(e as Error)
     }

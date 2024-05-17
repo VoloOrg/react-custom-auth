@@ -47,7 +47,10 @@ const Router: FC = () => {
           path: PUBLIC_PAGES.confirmation,
           element: ConfirmationPage,
         },
-
+        {
+          path: PUBLIC_PAGES.registration,
+          element: RegistrationPage,
+        },
         {
           path: PRIVATE_PAGES.home,
           element: HomePage,
@@ -61,10 +64,6 @@ const Router: FC = () => {
           element: InvitationConfirmedPage,
         },
       ],
-    },
-    {
-      path: PUBLIC_PAGES.registration,
-      element: RegistrationPage,
     },
     { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
   ])

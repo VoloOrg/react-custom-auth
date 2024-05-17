@@ -1,5 +1,5 @@
 import { Profile } from 'store/types'
-import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues } from 'types/auth'
+import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
 import axiosInstance from 'utils/api'
 
 export const login = async (credentials: LoginFormValues) => {
@@ -33,6 +33,12 @@ export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'co
 
 export const invite = async (invitationData: InvitationFormValues) => {
   const res = await axiosInstance.post(`/auth/InviteUser`, invitationData)
+
+  return res
+}
+
+export const verifyToken = async (data: VerifyTokenThunkArgs) => {
+  const res = await axiosInstance.post(`/connect/VerifyToken`, data)
 
   return res
 }
