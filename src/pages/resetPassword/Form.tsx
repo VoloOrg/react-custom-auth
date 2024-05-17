@@ -31,7 +31,7 @@ export const ResetPasswordForm: FC = () => {
       <Box display="flex" flexDirection="column" gap={2}>
         {RESET_PASSWORD_FORM_TEMPLATE.map((field) => {
           const { name, placeholder } = field
-          if (field.name === 'oldPassword' && (!isFromProfile || !isLoggedIn)) return null
+          if (field.name === 'currentPassword' && (!isFromProfile || !isLoggedIn)) return null
           return (
             <TextField
               key={name}

@@ -1,7 +1,7 @@
 import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction } from 'api/auth'
 import { getProfile } from 'api/profile'
-import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { LoginFormValues, ResetPasswordFormValues } from 'types/auth'
+import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
@@ -17,8 +17,8 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
 
       return profile
     } catch (e) {
-      console.log({e});
-      
+      console.log({ e })
+
       return rejectWithValue(e as Error)
     }
   }
@@ -40,19 +40,16 @@ export const registerThunk = createAppAsyncThunk<Profile, Omit<Profile, 'id'>>(
   }
 )
 
-export const logoutThunk = createAppAsyncThunk<void, void>(
-  'logout',
-  async (_, { rejectWithValue, dispatch }) => {
-    try {
-      await logout()
+export const logoutThunk = createAppAsyncThunk<void, void>('logout', async (_, { rejectWithValue, dispatch }) => {
+  try {
+    await logout()
 
-      dispatch(setIsLoggedIn(false))
-      dispatch(setProfileData(PROFILE_INITIAL_DATA))
-    } catch (e) {
-      return rejectWithValue(e as Error)
-    }
+    dispatch(setIsLoggedIn(false))
+    dispatch(setProfileData(PROFILE_INITIAL_DATA))
+  } catch (e) {
+    return rejectWithValue(e as Error)
   }
-)
+})
 
 export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
   'forgotPassword',
@@ -65,7 +62,7 @@ export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
   }
 )
 
-export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFormValues, 'confirmNewPassword'>>(
+export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFormValues, 'confirmPassword'>>(
   'resetPassword',
   async (passwords, { rejectWithValue }) => {
     try {
@@ -92,7 +89,7 @@ export const getProfileThunk = createAppAsyncThunk<Profile, void>(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const profile = await getProfile()
-      
+
       dispatch(setProfileData(profile))
 
       return profile

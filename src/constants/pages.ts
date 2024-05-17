@@ -9,5 +9,5 @@ export const PUBLIC_PAGES = {
   forgotPassword: '/forgot-password',
   resetPassword: '/resetPassword',
   confirmation: '/confirmation',
-  registration: '/registration',
+  registration: '/register',
 } as const

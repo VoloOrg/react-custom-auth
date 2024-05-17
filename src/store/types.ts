@@ -9,8 +9,8 @@ export type ProfileSlice = {
 
 export type Profile = {
   id: string
-  firstName: string
-  lastName: string
+  // firstName: string
+  // lastName: string
   email: string
   role: Role
 }

@@ -1,4 +1,3 @@
-import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { Profile } from 'store/types'
 import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues } from 'types/auth'
 import axiosInstance from 'utils/api'
@@ -9,37 +8,31 @@ export const login = async (credentials: LoginFormValues) => {
 }
 
 export const register = async (profileData: Omit<Profile, 'id'>) => {
-  // const { data } = await axiosInstance.post<Profile>(`/register`, profileData)
-  console.log({ profileData })
+  const { data } = await axiosInstance.post<Profile>(`/auth/Account/Register`, profileData)
 
-  const data: Profile = PROFILE_INITIAL_DATA
   return data
 }
 
 export const logout = async () => {
-  const res = await axiosInstance.get(`/connect/logout`)
-  console.log({ res })
+  const { data } = await axiosInstance.get(`/auth/account/logout`)
 
-  return true
+  return data
 }
 
 export const sendForgotPasswordInstruction = async (payload: Pick<Profile, 'email'>) => {
-  const res = await axiosInstance.post(`/connect/ForgotPassword`, payload)
-  console.log({ res })
+  const { data } = await axiosInstance.post(`/auth/connect/ForgotPassword`, payload)
 
-  return true
+  return data
 }
 
-export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'confirmNewPassword'>) => {
-  // const { data } = await axiosInstance.post<Profile>(`/resetPassword`, passwords)
-  console.log({ passwords })
+export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'confirmPassword'>) => {
+  const { data } = await axiosInstance.post<Profile>(`auth/Account/changepassword`, passwords)
 
-  return true
+  return data
 }
 
 export const invite = async (invitationData: InvitationFormValues) => {
-  const res = await axiosInstance.post(`/Account/InviteUser`, invitationData)
-  console.log({ res })
+  const res = await axiosInstance.post(`/auth/InviteUser`, invitationData)
 
-  return true
+  return res
 }

@@ -8,7 +8,7 @@ import { ROLES } from 'constants/profile'
 import AppNavLink from 'components/ui/appNavLink'
 
 const HomePage: FC = () => {
-  const { firstName, lastName, email, role } = useAppSelector(selectProfileData)
+  const { email, role } = useAppSelector(selectProfileData)
   const isPending = useAppSelector(selectIsPending)
 
   const handleLogoutClick = useLogout()
@@ -16,7 +16,7 @@ const HomePage: FC = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={1}>
       <Typography align="center" variant="h4">
-        Welcome {firstName} {lastName}
+        Welcome
       </Typography>
       <Typography paragraph>{email}</Typography>
       {role === ROLES.admin && (

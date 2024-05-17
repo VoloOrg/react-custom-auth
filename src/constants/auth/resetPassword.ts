@@ -2,20 +2,20 @@ import { object, ref } from 'yup'
 import { COMMON_SCHEMA_GENERATORS } from './commons'
 
 export const RESET_PASSWORD_FORM_INITIAL_VALUES = {
-  oldPassword: '',
+  currentPassword: '',
   newPassword: '',
-  confirmNewPassword: '',
+  confirmPassword: '',
 }
 
 export const RESET_PASSWORD_FORM_VALIDATION_SCHEMA = object({
-  oldPassword: COMMON_SCHEMA_GENERATORS.password,
+  currentPassword: COMMON_SCHEMA_GENERATORS.password,
   newPassword: COMMON_SCHEMA_GENERATORS.password,
-  confirmNewPassword: COMMON_SCHEMA_GENERATORS.password.oneOf([ref('newPassword')], 'Passwords must match'),
+  confirmPassword: COMMON_SCHEMA_GENERATORS.password.oneOf([ref('newPassword')], 'Passwords must match'),
 })
 
 export const RESET_PASSWORD_FORM_TEMPLATE = [
   {
-    name: 'oldPassword',
+    name: 'currentPassword',
     placeholder: 'Enter Old Password',
   },
   {
@@ -23,7 +23,7 @@ export const RESET_PASSWORD_FORM_TEMPLATE = [
     placeholder: 'Enter New Password',
   },
   {
-    name: 'confirmNewPassword',
+    name: 'confirmPassword',
     placeholder: 'Confirm New Password',
   },
 ] as const

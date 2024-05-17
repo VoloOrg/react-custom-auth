@@ -13,9 +13,8 @@ export const useResetPassword = () => {
   return useCallback(
     async (values: typeof RESET_PASSWORD_FORM_INITIAL_VALUES) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { confirmNewPassword, ...passwords } = values
 
-      const res = await dispatch(resetPasswordThunk(passwords))
+      const res = await dispatch(resetPasswordThunk(values))
       if (isRejectedAction(res)) return
 
       navigate(PUBLIC_PAGES.confirmation)

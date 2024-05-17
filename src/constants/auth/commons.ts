@@ -10,7 +10,7 @@ export const COMMON_SCHEMA_GENERATORS = {
 export const PROFILE_INITIAL_DATA: Profile = {
   id: '',
   email: '',
-  firstName: '',
-  lastName: '',
+  // firstName: '',
+  // lastName: '',
   role: ROLES.admin,
 }

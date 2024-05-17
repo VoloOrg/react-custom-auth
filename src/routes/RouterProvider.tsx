@@ -47,10 +47,7 @@ const Router: FC = () => {
           path: PUBLIC_PAGES.confirmation,
           element: ConfirmationPage,
         },
-        {
-          path: PUBLIC_PAGES.registration,
-          element: RegistrationPage,
-        },
+
         {
           path: PRIVATE_PAGES.home,
           element: HomePage,
@@ -63,9 +60,13 @@ const Router: FC = () => {
           path: PRIVATE_PAGES.invitationConfirm,
           element: InvitationConfirmedPage,
         },
-        { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       ],
     },
+    {
+      path: PUBLIC_PAGES.registration,
+      element: RegistrationPage,
+    },
+    { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
   ])
 
   return <RouterProvider fallbackElement={<Loader />} router={router} />
