@@ -17,7 +17,7 @@ export const ResetPasswordForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const location = useLocation()
-  const isFromProfile = location?.state?.origin === 'profile'
+  const isFromProfile = location?.state?.origin === PRIVATE_PAGES.home
   const resetPassword = useResetPassword()
 
   const formik = useFormik({

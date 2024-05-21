@@ -23,7 +23,7 @@ export const useRegister = () => {
         })
       )
 
-      if (isRejectedAction(res)) return
+      if (isRejectedAction(res)) return;
 
       navigate(PUBLIC_PAGES.confirmation)
     },

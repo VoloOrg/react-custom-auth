@@ -13,7 +13,7 @@ const FloatingError: FC = () => {
 
   return (
     <Snackbar open={!!errorMessage} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={resetError}>
-      <Alert severity="error" variant="filled" onClose={resetError}>
+      <Alert severity="error" variant="filled">
         {errorMessage}
       </Alert>
     </Snackbar>
