@@ -1,7 +1,6 @@
 import { Profile } from 'store/types'
 import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
 import axiosInstance from 'utils/api'
-import { sleep } from 'utils/commons'
 
 export const login = async (credentials: LoginFormValues) => {
   const { data } = await axiosInstance.post<Profile>(`/auth/connect/token`, credentials)
@@ -39,7 +38,6 @@ export const invite = async (invitationData: InvitationFormValues) => {
 }
 
 export const verifyToken = async (payload: VerifyTokenThunkArgs) => {
-  await sleep(2000)
   const res = await axiosInstance.post(`/auth/connect/VerifyToken`, payload)
 console.log({res});
 
