@@ -22,11 +22,11 @@ export const REGISTRATION_FORM_TEMPLATE = [
   //   type: 'text',
   //   placeholder: 'Enter Last Name',
   // },
-  {
-    name: 'email',
-    type: 'text',
-    placeholder: 'Enter Email',
-  },
+  // {
+  //   name: 'email',
+  //   type: 'text',
+  //   placeholder: 'Enter Email',
+  // },
   {
     name: 'password',
     type: 'password',

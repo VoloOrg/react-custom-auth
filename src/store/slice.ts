@@ -29,15 +29,19 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addMatcher(isRejectedAction, (state, action: PayloadAction<SerializedError>) => {
+        state.isPending = false
+        console.log({action});
+        
+        state.errorMessage = action.payload.message ?? 'Rejected Action.'
+      })
       .addMatcher(isPendingAction, (state) => {
         state.isPending = true
       })
-      .addMatcher(isFulfilledAction, (state) => {
+      .addMatcher(isFulfilledAction, (state, action) => {
+        console.log({action});
+        
         state.isPending = false
-      })
-      .addMatcher(isRejectedAction, (state, action: PayloadAction<SerializedError>) => {
-        state.isPending = false
-        state.errorMessage = action.payload.message ?? 'Rejected Action.'
       })
   },
 })
