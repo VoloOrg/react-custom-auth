@@ -39,7 +39,6 @@ export const invite = async (invitationData: InvitationFormValues) => {
 
 export const verifyToken = async (payload: VerifyTokenThunkArgs) => {
   const res = await axiosInstance.post(`/auth/connect/VerifyToken`, payload)
-console.log({res});
 
   return res
 }

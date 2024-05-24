@@ -2,7 +2,7 @@ import { invite, login, logout, register, resetPassword, sendForgotPasswordInstr
 import { getProfile } from 'api/profile'
 import { LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
-import { createAppAsyncThunk } from 'utils/store'
+import { createAppAsyncThunk, processThunkError } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
 import { AxiosError, isAxiosError } from 'axios'
@@ -18,9 +18,7 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
 
       return profile
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
@@ -36,9 +34,7 @@ export const registerThunk = createAppAsyncThunk<Profile, Omit<Profile, 'id'>>(
 
       return profile
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
@@ -62,9 +58,7 @@ export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
     try {
       await sendForgotPasswordInstruction({ email })
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
@@ -75,9 +69,7 @@ export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFo
     try {
       await resetPassword(passwords)
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
@@ -88,9 +80,7 @@ export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'ro
     try {
       await invite(invitationData)
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
@@ -101,26 +91,21 @@ export const verifyTokenThunk = createAppAsyncThunk<void, VerifyTokenThunkArgs>(
     try {
       await verifyToken(data)
     } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
+      return rejectWithValue(processThunkError(e))
     }
   }
 )
 
 export const getProfileThunk = createAppAsyncThunk<Profile, void>(
   'getProfile',
-  async (_, { rejectWithValue, dispatch }) => {
-    try {
-      const profile = await getProfile()
+  async (_, { dispatch }) => {
+    const profile = await getProfile()
 
-      dispatch(setProfileData(profile))
+    dispatch(setProfileData(profile))
 
-      return profile
-    } catch (e) {
-      const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
-      return rejectWithValue(processedError)
-    }
+    return profile
   }
 )
+
+
+

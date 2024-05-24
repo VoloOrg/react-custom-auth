@@ -1,8 +1,8 @@
-import { Loader } from 'components/ui/loader'
-import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
-import { usePrivateRouteLoader } from 'hooks/usePrivateRouteLoader'
 import { FC } from 'react'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { usePrivateRouteLoader } from 'hooks/usePrivateRouteLoader'
+import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
+import { Loader } from 'components/ui/loader'
 import {
   ConfirmationPage,
   ForgotPasswordPage,
@@ -15,11 +15,9 @@ import {
 } from './Pages'
 import RouterErrorElement from './RouterErrorElement'
 import RoutesContainer from './RoutesContainer'
-
-
+import ProtectedRoutes from './ProtectedRoutes'
 
 const Router: FC = () => {
-
   const loader = usePrivateRouteLoader()
 
   const router = createBrowserRouter([
@@ -27,22 +25,23 @@ const Router: FC = () => {
       element: <RoutesContainer />,
       errorElement: <RouterErrorElement />,
       children: [
-        {  
+        {
           loader,
+          element: <ProtectedRoutes />,
           children: [
             {
               path: PRIVATE_PAGES.home,
               element: HomePage,
             },
-            {
-              path: PRIVATE_PAGES.invitation,
-              element: InvitationPage,
-            },
-            {
-              path: PRIVATE_PAGES.invitationConfirm,
-              element: InvitationConfirmedPage,
-            },
           ],
+        },
+        {
+          path: PRIVATE_PAGES.invitation,
+          element: InvitationPage,
+        },
+        {
+          path: PRIVATE_PAGES.invitationConfirm,
+          element: InvitationConfirmedPage,
         },
         {
           path: PUBLIC_PAGES.login,
@@ -65,9 +64,8 @@ const Router: FC = () => {
           element: ForgotPasswordPage,
         },
         { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
-      ]
-    }
-
+      ],
+    },
   ])
 
   return <RouterProvider fallbackElement={<Loader />} router={router} />

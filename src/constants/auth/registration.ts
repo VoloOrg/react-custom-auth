@@ -43,7 +43,7 @@ export const REGISTRATION_FORM_VALIDATION_SCHEMA = object({
   // not implemented on backend
   // firstName: generateRequiredStringSchema('First Name'),
   // lastName: generateRequiredStringSchema('Last Name'),
-  email: COMMON_SCHEMA_GENERATORS.email,
+  // email: COMMON_SCHEMA_GENERATORS.email,
   password: COMMON_SCHEMA_GENERATORS.password,
   confirmPassword: COMMON_SCHEMA_GENERATORS.password.oneOf([ref('password')], 'Passwords must match'),
 })
