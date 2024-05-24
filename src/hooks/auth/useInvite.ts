@@ -11,9 +11,8 @@ export const useInvite = () => {
   const dispatch = useAppDispatch()
 
   return useCallback(
-    async (values: Pick<Profile, 'email' | 'token'>) => {
+    async (values: Pick<Profile, 'email' | 'token' | 'role'>) => {
       const res = await dispatch(inviteThunk(values))
-      // JSON.stringify(JSON.parse(values))
 
       if (isRejectedAction(res)) return
 
