@@ -9,10 +9,13 @@ export type ProfileSlice = {
 
 export type Profile = {
   id: string
+  role: Role
   // firstName: string
   // lastName: string
   email: string
-  role: Role
+  newPassword: string
+  confirmPassword: string
+  token: string
 }
 
 export type Role = (typeof ROLES)[keyof typeof ROLES]

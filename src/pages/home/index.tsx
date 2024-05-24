@@ -25,8 +25,13 @@ const HomePage: FC = () => {
         </AppNavLink>
       )}
       <Box marginBottom={3}>
-        <AppNavLink primary to={PUBLIC_PAGES.resetPassword} state={{ origin: PRIVATE_PAGES.home }} disabled={isPending}>
-          Reset Password
+        <AppNavLink
+          primary
+          to={PUBLIC_PAGES.changePassword}
+          state={{ origin: PRIVATE_PAGES.home }}
+          disabled={isPending}
+        >
+          Change Password
         </AppNavLink>
       </Box>
       <Button variant="contained" onClick={handleLogoutClick} disabled={isPending}>

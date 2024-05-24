@@ -1,10 +1,12 @@
-import { Loader } from 'components/ui/loader'
-import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
-import { usePrivateRouteLoader } from 'hooks/usePrivateRouteLoader'
 import { FC } from 'react'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { usePrivateRouteLoader } from 'hooks/usePrivateRouteLoader'
+import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
+import { Loader } from 'components/ui/loader'
 import {
+  ChangePasswordPage,
   ConfirmationPage,
+  EmailConfirmationPage,
   ForgotPasswordPage,
   HomePage,
   InvitationConfirmedPage,
@@ -16,10 +18,7 @@ import {
 import RouterErrorElement from './RouterErrorElement'
 import RoutesContainer from './RoutesContainer'
 
-
-
 const Router: FC = () => {
-
   const loader = usePrivateRouteLoader()
 
   const router = createBrowserRouter([
@@ -27,7 +26,7 @@ const Router: FC = () => {
       element: <RoutesContainer />,
       errorElement: <RouterErrorElement />,
       children: [
-        {  
+        {
           loader,
           children: [
             {
@@ -57,17 +56,24 @@ const Router: FC = () => {
           element: ConfirmationPage,
         },
         {
-          path: PUBLIC_PAGES.resetPassword,
-          element: ResetPasswordPage,
+          path: PUBLIC_PAGES.emailConfirmation,
+          element: EmailConfirmationPage,
+        },
+        {
+          path: PUBLIC_PAGES.changePassword,
+          element: ChangePasswordPage,
         },
         {
           path: PUBLIC_PAGES.forgotPassword,
           element: ForgotPasswordPage,
         },
+        {
+          path: PUBLIC_PAGES.resetPassword,
+          element: ResetPasswordPage,
+        },
         { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
-      ]
-    }
-
+      ],
+    },
   ])
 
   return <RouterProvider fallbackElement={<Loader />} router={router} />

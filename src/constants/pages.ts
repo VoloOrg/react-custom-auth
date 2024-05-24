@@ -7,7 +7,9 @@ export const PRIVATE_PAGES = {
 export const PUBLIC_PAGES = {
   login: '/login',
   forgotPassword: '/forgot-password',
-  resetPassword: '/resetPassword',
+  changePassword: '/changePassword',
+  resetPassword: '/reset-password',
   confirmation: '/confirmation',
+  emailConfirmation: '/emailConfirmation',
   registration: '/register',
 } as const

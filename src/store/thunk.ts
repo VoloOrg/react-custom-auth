@@ -1,11 +1,20 @@
-import { invite, login, logout, register, resetPassword, sendForgotPasswordInstruction, verifyToken } from 'api/auth'
+import { AxiosError, isAxiosError } from 'axios'
+import {
+  changePassword,
+  invite,
+  login,
+  logout,
+  register,
+  resetPassword,
+  sendForgotPasswordInstruction,
+  verifyToken,
+} from 'api/auth'
 import { getProfile } from 'api/profile'
-import { LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
+import { ChangePasswordFormValues, LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
 import { Profile } from './types'
-import { AxiosError, isAxiosError } from 'axios'
 
 export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   'login',
@@ -19,7 +28,7 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
       return profile
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
@@ -37,7 +46,7 @@ export const registerThunk = createAppAsyncThunk<Profile, Omit<Profile, 'id'>>(
       return profile
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
@@ -51,7 +60,7 @@ export const logoutThunk = createAppAsyncThunk<void, void>('logout', async (_, {
     dispatch(setProfileData(PROFILE_INITIAL_DATA))
   } catch (e) {
     const error = e as Error | AxiosError
-    const processedError = isAxiosError(error) ? error?.response?.data : error;
+    const processedError = isAxiosError(error) ? error?.response?.data : error
     return rejectWithValue(processedError)
   }
 })
@@ -63,33 +72,46 @@ export const forgotPasswordThunk = createAppAsyncThunk<void, Profile['email']>(
       await sendForgotPasswordInstruction({ email })
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
 )
 
-export const resetPasswordThunk = createAppAsyncThunk<void, Omit<ResetPasswordFormValues, 'confirmPassword'>>(
-  'resetPassword',
+export const changePasswordThunk = createAppAsyncThunk<void, Omit<ChangePasswordFormValues, 'confirmPassword'>>(
+  'changePassword',
   async (passwords, { rejectWithValue }) => {
     try {
-      await resetPassword(passwords)
+      await changePassword(passwords)
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
 )
 
-export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'role'>>(
+export const resetPasswordThunk = createAppAsyncThunk<void, ResetPasswordFormValues>(
+  'resetPassword',
+  async (payload, { rejectWithValue }) => {
+    try {
+      await resetPassword(payload)
+    } catch (e) {
+      const error = e as Error | AxiosError
+      const processedError = isAxiosError(error) ? error?.response?.data : error
+      return rejectWithValue(processedError)
+    }
+  }
+)
+
+export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'token'>>(
   'invite',
   async (invitationData, { rejectWithValue }) => {
     try {
       await invite(invitationData)
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
@@ -102,7 +124,7 @@ export const verifyTokenThunk = createAppAsyncThunk<void, VerifyTokenThunkArgs>(
       await verifyToken(data)
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
@@ -119,7 +141,7 @@ export const getProfileThunk = createAppAsyncThunk<Profile, void>(
       return profile
     } catch (e) {
       const error = e as Error | AxiosError
-      const processedError = isAxiosError(error) ? error?.response?.data : error;
+      const processedError = isAxiosError(error) ? error?.response?.data : error
       return rejectWithValue(processedError)
     }
   }
