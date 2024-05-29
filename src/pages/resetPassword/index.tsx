@@ -5,7 +5,10 @@ const ResetPassword = () => {
   return (
     <>
       <Typography align="center" variant="h4" gutterBottom>
-        Reset Password
+        Reset your password
+      </Typography>
+      <Typography align="center" gutterBottom>
+        Please enter new password and confirm it to recover your account.
       </Typography>
       <ResetPasswordForm />
     </>

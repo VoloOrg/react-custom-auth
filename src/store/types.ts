@@ -8,11 +8,8 @@ export type ProfileSlice = {
 }
 
 export type Profile = {
-  id: string
-  // firstName: string
-  // lastName: string
   email: string
-  role: Role
+  role?: Role
 }
 
 export type Role = (typeof ROLES)[keyof typeof ROLES]

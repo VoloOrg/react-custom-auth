@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
-import { ROLES } from 'constants/profile'
 import { useQueryParams } from 'hooks/useQueryParams'
+import { ROLES } from 'constants/profile'
 import { RegistrationForm } from './Form'
 
 const Registration = () => {

@@ -1,5 +1,11 @@
 import { Profile } from 'store/types'
-import { InvitationFormValues, LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
+import {
+  ChangePasswordFormValues,
+  InvitationFormValues,
+  LoginFormValues,
+  ResetPasswordFormValues,
+  VerifyTokenThunkArgs,
+} from 'types/auth'
 import axiosInstance from 'utils/api'
 
 export const login = async (credentials: LoginFormValues) => {
@@ -8,7 +14,7 @@ export const login = async (credentials: LoginFormValues) => {
 }
 
 export const register = async (profileData: Omit<Profile, 'id'>) => {
-  const { data } = await axiosInstance.post<Profile>(`/connect/Register`, profileData)
+  const { data } = await axiosInstance.post<Profile>(`/auth/connect/Register`, profileData)
 
   return data
 }
@@ -25,8 +31,8 @@ export const sendForgotPasswordInstruction = async (payload: Pick<Profile, 'emai
   return data
 }
 
-export const resetPassword = async (passwords: Omit<ResetPasswordFormValues, 'confirmPassword'>) => {
-  const { data } = await axiosInstance.post<Profile>(`auth/Account/changepassword`, passwords)
+export const changePassword = async (passwords: Omit<ChangePasswordFormValues, 'confirmPassword'>) => {
+  const { data } = await axiosInstance.post<Profile>(`/auth/Account/changepassword`, passwords)
 
   return data
 }
@@ -39,7 +45,12 @@ export const invite = async (invitationData: InvitationFormValues) => {
 
 export const verifyToken = async (payload: VerifyTokenThunkArgs) => {
   const res = await axiosInstance.post(`/auth/connect/VerifyToken`, payload)
-console.log({res});
 
   return res
+}
+
+export const resetPassword = async (payload: ResetPasswordFormValues) => {
+  const { data } = await axiosInstance.post<Profile>(`/auth/connect/ResetPassword`, payload)
+
+  return data
 }

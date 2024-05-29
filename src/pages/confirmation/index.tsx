@@ -1,14 +1,25 @@
 import { Box, Typography } from '@mui/material'
+import { selectIsLoggedIn, selectIsPending } from 'store/selectors'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { PRIVATE_PAGES } from 'constants/pages'
+import AppNavLink from 'components/ui/appNavLink'
 
 const Confirmation = () => {
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
+  const isPending = useAppSelector(selectIsPending)
+
   return (
     <Box textAlign="center">
       <Typography align="center" variant="h4" gutterBottom>
-        Follow the Instructions in the Email.
+        Your action is succeed!
       </Typography>
       <Typography>
-        We've sent a confirmation email to the address you provided. Please check your inbox to confirm your email
-        address and complete the process.
+        Back to{' '}
+        {
+          <AppNavLink primary to={PRIVATE_PAGES.home} disabled={isPending}>
+            {isLoggedIn ? 'Profile' : 'Login'}
+          </AppNavLink>
+        }
       </Typography>
     </Box>
   )

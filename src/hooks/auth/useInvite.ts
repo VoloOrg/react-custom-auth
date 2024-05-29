@@ -13,6 +13,7 @@ export const useInvite = () => {
   return useCallback(
     async (values: Pick<Profile, 'email' | 'role'>) => {
       const res = await dispatch(inviteThunk(values))
+
       if (isRejectedAction(res)) return
 
       navigate(PRIVATE_PAGES.invitationConfirm, {
