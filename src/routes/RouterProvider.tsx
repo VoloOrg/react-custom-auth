@@ -6,7 +6,7 @@ import { Loader } from 'components/ui/loader'
 import {
   ChangePasswordPage,
   ConfirmationPage,
-  EmailConfirmationPage,
+  EmailVerificationPage,
   ForgotPasswordPage,
   HomePage,
   InvitationConfirmedPage,
@@ -56,8 +56,8 @@ const Router: FC = () => {
           element: ConfirmationPage,
         },
         {
-          path: PUBLIC_PAGES.emailConfirmation,
-          element: EmailConfirmationPage,
+          path: PUBLIC_PAGES.emailVerification,
+          element: EmailVerificationPage,
         },
         {
           path: PUBLIC_PAGES.changePassword,

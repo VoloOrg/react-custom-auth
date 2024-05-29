@@ -5,7 +5,7 @@ export type LoginFormValues = {
   password: string
 }
 
-export type InvitationFormValues = Pick<Profile, 'email' | 'token'>
+export type InvitationFormValues = Pick<Profile, 'email'>
 
 export type ChangePasswordFormValues = {
   currentPassword: string
@@ -19,6 +19,8 @@ export type ResetPasswordFormValues = {
   email: string
   token: string
 }
+
+export type InvitationValues = ResetPasswordFormValues
 
 export type VerifyTokenThunkArgs = {
   email: string

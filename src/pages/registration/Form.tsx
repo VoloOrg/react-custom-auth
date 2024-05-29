@@ -13,13 +13,10 @@ import {
 import { PUBLIC_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
 
-export const RegistrationForm: FC<{
-  email: string
-  token: string
-}> = ({ email, token }) => {
+export const RegistrationForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)
   const errorMessage = useAppSelector(selectErrorMessage)
-  const register = useRegister(email, token)
+  const register = useRegister()
   const verifyToken = useVerifyToken()
 
   const formik = useFormik({

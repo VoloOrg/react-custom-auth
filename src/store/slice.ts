@@ -31,16 +31,13 @@ export const profileSlice = createSlice({
     builder
       .addMatcher(isRejectedAction, (state, action: PayloadAction<SerializedError>) => {
         state.isPending = false
-        console.log({action});
-        
+
         state.errorMessage = action.payload.message ?? 'Rejected Action.'
       })
       .addMatcher(isPendingAction, (state) => {
         state.isPending = true
       })
-      .addMatcher(isFulfilledAction, (state, action) => {
-        console.log({action});
-        
+      .addMatcher(isFulfilledAction, (state) => {
         state.isPending = false
       })
   },

@@ -17,7 +17,7 @@ export const useChangePassword = () => {
       const res = await dispatch(changePasswordThunk(values))
       if (isRejectedAction(res)) return
 
-      navigate(PUBLIC_PAGES.emailConfirmation)
+      navigate(PUBLIC_PAGES.confirmation)
     },
     [dispatch, navigate]
   )

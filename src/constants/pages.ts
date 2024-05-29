@@ -10,6 +10,6 @@ export const PUBLIC_PAGES = {
   changePassword: '/changePassword',
   resetPassword: '/reset-password',
   confirmation: '/confirmation',
-  emailConfirmation: '/emailConfirmation',
+  emailVerification: '/emailVerification',
   registration: '/register',
 } as const

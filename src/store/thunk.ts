@@ -10,7 +10,13 @@ import {
   verifyToken,
 } from 'api/auth'
 import { getProfile } from 'api/profile'
-import { ChangePasswordFormValues, LoginFormValues, ResetPasswordFormValues, VerifyTokenThunkArgs } from 'types/auth'
+import {
+  ChangePasswordFormValues,
+  InvitationValues,
+  LoginFormValues,
+  ResetPasswordFormValues,
+  VerifyTokenThunkArgs,
+} from 'types/auth'
 import { PROFILE_INITIAL_DATA } from 'constants/auth/commons'
 import { createAppAsyncThunk } from 'utils/store'
 import { setIsLoggedIn, setProfileData } from './slice'
@@ -34,7 +40,7 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   }
 )
 
-export const registerThunk = createAppAsyncThunk<Profile, Omit<Profile, 'id'>>(
+export const registerThunk = createAppAsyncThunk<Profile, InvitationValues>(
   'register',
   async (profileData, { rejectWithValue, dispatch }) => {
     try {
@@ -104,7 +110,7 @@ export const resetPasswordThunk = createAppAsyncThunk<void, ResetPasswordFormVal
   }
 )
 
-export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email' | 'token'>>(
+export const inviteThunk = createAppAsyncThunk<void, Pick<Profile, 'email'>>(
   'invite',
   async (invitationData, { rejectWithValue }) => {
     try {

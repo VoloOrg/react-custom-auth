@@ -12,13 +12,10 @@ import {
 import { PRIVATE_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
 
-export const ResetPasswordForm: FC<{
-  email: string
-  token: string
-}> = ({ email, token }) => {
+export const ResetPasswordForm: FC = () => {
   const isPending = useAppSelector(selectIsPending)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
-  const resetPassword = useResetPassword(email, token)
+  const resetPassword = useResetPassword()
 
   const formik = useFormik({
     initialValues: RESET_PASSWORD_FORM_INITIAL_VALUES,

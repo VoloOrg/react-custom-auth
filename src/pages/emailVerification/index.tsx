@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-const EmailConfirmation = () => {
+const EmailVerification = () => {
   return (
     <Box textAlign="center">
       <Typography align="center" variant="h4" gutterBottom>
@@ -14,4 +14,4 @@ const EmailConfirmation = () => {
   )
 }
 
-export default EmailConfirmation
+export default EmailVerification

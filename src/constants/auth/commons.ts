@@ -8,12 +8,6 @@ export const COMMON_SCHEMA_GENERATORS = {
 }
 
 export const PROFILE_INITIAL_DATA: Profile = {
-  id: '',
   email: '',
-  newPassword: '',
-  confirmPassword: '',
-  // firstName: '',
-  // lastName: '',
-  token: '',
   role: ROLES.admin,
 }
