@@ -10,7 +10,7 @@ import {
   CHANGE_PASSWORD_FORM_TEMPLATE,
   CHANGE_PASSWORD_FORM_VALIDATION_SCHEMA,
 } from 'constants/auth/changePassword'
-import { PRIVATE_PAGES, PUBLIC_PAGES } from 'constants/pages'
+import { PRIVATE_PAGES } from 'constants/pages'
 import AppNavLink from 'components/ui/appNavLink'
 
 export const ChangePasswordForm: FC = () => {
@@ -49,9 +49,6 @@ export const ChangePasswordForm: FC = () => {
         <Box display="flex" justifyContent="space-between">
           <AppNavLink primary to={PRIVATE_PAGES.home} disabled={isPending}>
             {isLoggedIn ? 'Profile' : 'Login'}
-          </AppNavLink>
-          <AppNavLink primary to={PUBLIC_PAGES.forgotPassword} disabled={isPending}>
-            Forgot Password
           </AppNavLink>
         </Box>
         <Button type="submit" variant="contained" disabled={isPending}>

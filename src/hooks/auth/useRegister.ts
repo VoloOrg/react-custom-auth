@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { registerThunk } from 'store/thunk'
+import { Role } from 'store/types'
 import { useQueryParams } from 'hooks/useQueryParams'
 import { REGISTRATION_FORM_INITIAL_VALUES } from 'constants/auth/registration'
 import { PUBLIC_PAGES } from 'constants/pages'
@@ -14,6 +15,7 @@ export const useRegister = () => {
 
   const email = queryParams.email
   const token = queryParams.token.replace(/ /gi, '+')
+  const role = +queryParams.role as Role
 
   return useCallback(
     async (values: typeof REGISTRATION_FORM_INITIAL_VALUES) => {
@@ -26,6 +28,7 @@ export const useRegister = () => {
           confirmPassword,
           email,
           token,
+          role,
         })
       )
 

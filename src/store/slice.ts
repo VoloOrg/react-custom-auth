@@ -15,6 +15,8 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     setProfileData: (state, { payload }: PayloadAction<ProfileActionPayloads['setProfileData']>) => {
+      console.log({ payload })
+
       state.data = {
         ...state.data,
         ...payload,
