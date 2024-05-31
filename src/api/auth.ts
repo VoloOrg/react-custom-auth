@@ -13,8 +13,10 @@ export const login = async (credentials: LoginFormValues) => {
   return data
 }
 
-export const register = async (profileData: Omit<Profile, 'id'>) => {
-  const { data } = await axiosInstance.post<Profile>(`/auth/connect/Register`, profileData)
+export const register = async (profileData: Profile) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { role, ...payload } = profileData
+  const { data } = await axiosInstance.post<Profile>(`/auth/connect/Register`, payload)
 
   return data
 }

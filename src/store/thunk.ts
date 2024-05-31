@@ -27,8 +27,6 @@ export const loginThunk = createAppAsyncThunk<Profile, LoginFormValues>(
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const profile = await login(credentials)
-      dispatch(setProfileData(profile))
-
       dispatch(setIsLoggedIn(true))
 
       return profile
@@ -45,7 +43,9 @@ export const registerThunk = createAppAsyncThunk<Profile, InvitationValues>(
   async (profileData, { rejectWithValue, dispatch }) => {
     try {
       const profile = await register(profileData)
-      dispatch(setProfileData(profile))
+      console.log({ profile })
+
+      dispatch(setProfileData({ email: profileData.email, role: profileData.role }))
 
       dispatch(setIsLoggedIn(true))
 

@@ -20,7 +20,7 @@ export type ResetPasswordFormValues = {
   token: string
 }
 
-export type InvitationValues = ResetPasswordFormValues
+export type InvitationValues = ResetPasswordFormValues & Pick<Profile, 'role'>
 
 export type VerifyTokenThunkArgs = {
   email: string
