@@ -27,23 +27,6 @@ const Router: FC = () => {
       errorElement: <RouterErrorElement />,
       children: [
         {
-          loader,
-          children: [
-            {
-              path: PRIVATE_PAGES.home,
-              element: HomePage,
-            },
-            {
-              path: PRIVATE_PAGES.invitation,
-              element: InvitationPage,
-            },
-            {
-              path: PRIVATE_PAGES.invitationConfirm,
-              element: InvitationConfirmedPage,
-            },
-          ],
-        },
-        {
           path: PUBLIC_PAGES.login,
           element: LoginPage,
         },
@@ -70,6 +53,21 @@ const Router: FC = () => {
         {
           path: PUBLIC_PAGES.resetPassword,
           element: ResetPasswordPage,
+        },
+        {
+          loader,
+          path: PRIVATE_PAGES.home,
+          element: HomePage,
+        },
+        {
+          loader,
+          path: PRIVATE_PAGES.invitation,
+          element: InvitationPage,
+        },
+        {
+          loader,
+          path: PRIVATE_PAGES.invitationConfirm,
+          element: InvitationConfirmedPage,
         },
         { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       ],
