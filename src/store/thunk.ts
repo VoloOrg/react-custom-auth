@@ -43,7 +43,6 @@ export const registerThunk = createAppAsyncThunk<Profile, InvitationValues>(
   async (profileData, { rejectWithValue, dispatch }) => {
     try {
       const profile = await register(profileData)
-      console.log({ profile })
 
       dispatch(setProfileData({ email: profileData.email, role: profileData.role }))
 

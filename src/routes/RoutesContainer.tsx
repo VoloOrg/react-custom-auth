@@ -7,6 +7,7 @@ const RoutesContainer: FC = () => {
   const navigation = useNavigation();
   
   const isLoading = navigation.state === 'loading';
+  
   if (isLoading) return <Loader />
 
   return (
