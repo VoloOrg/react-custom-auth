@@ -15,6 +15,7 @@ import {
   RegistrationPage,
   ResetPasswordPage,
 } from './Pages'
+import { ProtectedRoutes } from './ProtectedRoutes'
 import RouterErrorElement from './RouterErrorElement'
 import RoutesContainer from './RoutesContainer'
 
@@ -56,18 +57,21 @@ const Router: FC = () => {
         },
         {
           loader,
-          path: PRIVATE_PAGES.home,
-          element: HomePage,
-        },
-        {
-          loader,
-          path: PRIVATE_PAGES.invitation,
-          element: InvitationPage,
-        },
-        {
-          loader,
-          path: PRIVATE_PAGES.invitationConfirm,
-          element: InvitationConfirmedPage,
+          element: <ProtectedRoutes />,
+          children: [
+            {
+              path: PRIVATE_PAGES.home,
+              element: HomePage,
+            },
+            {
+              path: PRIVATE_PAGES.invitation,
+              element: InvitationPage,
+            },
+            {
+              path: PRIVATE_PAGES.invitationConfirm,
+              element: InvitationConfirmedPage,
+            },
+          ],
         },
         { path: '*', element: <Navigate to={PRIVATE_PAGES.home} /> },
       ],
