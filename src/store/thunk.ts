@@ -46,8 +46,6 @@ export const registerThunk = createAppAsyncThunk<Profile, InvitationValues>(
 
       dispatch(setProfileData({ email: profileData.email, role: profileData.role }))
 
-      dispatch(setIsLoggedIn(true))
-
       return profile
     } catch (e) {
       const error = e as Error | AxiosError
