@@ -36,6 +36,6 @@ export const useRegister = () => {
 
       navigate(PUBLIC_PAGES.confirmation)
     },
-    [dispatch, email, token, role, navigate]
+    [dispatch, navigate, email, token, role]
   )
 }
